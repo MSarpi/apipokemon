@@ -1,0 +1,20 @@
+
+
+.header-mood-buscador{
+    background-color: #2A74BA;
+    color: white;
+    text-transform: uppercase;
+    font-weight: bold;
+    text-align: center !important;
+}
+
+.footer-mood-buscador{
+    background-color: #2A74BA;
+}
+
+.card-data-pokemon{
+    padding: 0.5rem;
+    border: 2px solid #2A74BA;
+    border-radius: 10px;
+    background-color: #FFCB05;
+}
