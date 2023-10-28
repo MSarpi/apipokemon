@@ -21,8 +21,11 @@ class Buscador extends Component {
     fetch('https://pokeapi.co/api/v2/pokemon?limit=100000&offset=0')
       .then((response) => response.json())
       .then((data) => {
+        console.log(data)
         this.setState({ allPokemon: data.results });
       });
+
+    
   }
 
   componentWillUnmount() {
@@ -51,7 +54,7 @@ class Buscador extends Component {
       .then((data) => {
                 // Agregar tiempo de carga
           // Agregar tiempo de carga
-          toast.loading('Waiting...');
+          toast.loading('Buscando...');
 
           // Simular un retraso de 2 segundos (2000 milisegundos)
           setTimeout(() => {
@@ -67,7 +70,7 @@ class Buscador extends Component {
       .catch((error) => {
         // Agregar tiempo de carga
           // Agregar tiempo de carga
-          toast.loading('Waiting...');
+          toast.loading('Buscando');
 
           // Simular un retraso de 2 segundos (2000 milisegundos)
           setTimeout(() => {
@@ -76,8 +79,8 @@ class Buscador extends Component {
 
             // Después de 2 segundos, mostrar el mensaje de error
             toast.error('Debes Seleccionar un Pokémon');
-          }, 500);
-              });
+          }, 1500);
+        });
   };
 
   handleSubmit = (e) => {
@@ -97,16 +100,31 @@ class Buscador extends Component {
         <Toaster />
         <form onSubmit={this.handleSubmit}>
           <div className="row buscador">
-            <div className="col-sm-10">
+            <div className="col-sm-10 " >
               {/* Renderiza el select con opciones de Pokémon y establece el ID */}
-              <select id="searchInput" className="form-select form-select-lg mb-3 custom-select" aria-label=".form-select-lg example">
-                <option value="">Selecciona un Pokémon</option>
-                {allPokemon.map((pokemon) => (
-                  <option key={pokemon.name} value={pokemon.name}>
-                    {pokemon.name}
-                  </option>
-                ))}
+
+              <select id="searchInput" className="form-control select2" aria-label=".form-select-lg example">
+                <option className='select2' value="">Ingrese Nombre o ID Pokemon</option>
+                {allPokemon.map((pokemon) => {
+                  const urlParts = pokemon.url.split('/'); // Divide la URL por las barras "/"
+                  const pokemonNumber = urlParts[urlParts.length - 2]; // Obtiene el número del penúltimo segmento de la URL
+
+                  const inputString = pokemon.name;
+                  const firstLetter = inputString.charAt(0).toUpperCase(); // Obtiene la primera letra y la convierte en mayúscula
+                  const restOfString = inputString.slice(1); // Obtiene el resto de la cadena
+                  const result = firstLetter + restOfString; // Combina la primera letra en mayúscula con el resto de la cadena
+
+                  const Quitarmenos = result;
+                  const stringWithSpace = Quitarmenos.replace(/-/g, ' '); // Reemplaza todos los guiones con un espacio en blanco
+                  return (
+                    <option className='' key={pokemon.name} value={pokemon.name}>
+                       Nº {pokemonNumber} - {stringWithSpace}
+                    </option>
+                  );
+                })}
               </select>
+
+
             </div>
             <div className="col-sm-2">
               <button type="button" className="btn btn-lg btn_mood" onClick={this.handleSearch}>

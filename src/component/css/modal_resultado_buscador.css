@@ -34,3 +34,21 @@
     align-items: center; /* Centra verticalmente los elementos */
     height: 100%; /* Asegura que el contenido ocupe todo el espacio vertical */
   }
+
+.mood_slide{
+    opacity: 1; width: 9975px; transform: translate3d(-475px, 0px, 0px);
+}
+.swiper {
+    width: 500px;
+    height: 150px;
+  }
+
+
+
+  @media (max-width: 991px) {
+  .swiper {
+    width: 300px;
+    height: 100px;
+  }
+}
+
