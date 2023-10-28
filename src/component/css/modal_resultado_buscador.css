@@ -10,11 +10,27 @@
 
 .footer-mood-buscador{
     background-color: #2A74BA;
-}
+} 
 
 .card-data-pokemon{
     padding: 0.5rem;
     border: 2px solid #2A74BA;
     border-radius: 10px;
     background-color: #FFCB05;
+    margin-bottom: 1rem;
 }
+
+.table_mood{
+    color: white !important;
+}
+
+.progress{
+    margin-top: 0.35rem;
+}
+
+.carousel-inner {
+
+    justify-content: center; /* Centra horizontalmente los elementos */
+    align-items: center; /* Centra verticalmente los elementos */
+    height: 100%; /* Asegura que el contenido ocupe todo el espacio vertical */
+  }

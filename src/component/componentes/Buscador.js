@@ -1,12 +1,36 @@
 import Modal from './ModalBuscador';
 import React, { Component } from 'react';
 
+import $ from 'jquery';
+import 'select2'; 
+import { UseFetch } from '../api_conexion/UseFetch';
+import toast, { Toaster } from 'react-hot-toast';
+
 class Buscador extends Component {
   state = {
     searchTerm: '',
     showModal: false,
     pokemonData: null,
+    allPokemon: [], // Lista de todos los Pokémon
   };
+
+  componentDidMount() {
+    // Inicializa el select2 en el componente componentDidMount
+    $('#searchInput').select2();
+    // Obtiene la lista de todos los Pokémon y la almacena en el estado
+    fetch('https://pokeapi.co/api/v2/pokemon?limit=100000&offset=0')
+      .then((response) => response.json())
+      .then((data) => {
+        this.setState({ allPokemon: data.results });
+      });
+  }
+
+  componentWillUnmount() {
+    // Desinicializa el select2 para evitar problemas de memoria
+    if ($('#searchInput').data('select2')) {
+      $('#searchInput').select2('destroy');
+    }
+  }
 
   handleInputChange = (e) => {
     this.setState({ searchTerm: e.target.value });
@@ -14,7 +38,7 @@ class Buscador extends Component {
 
   handleSearch = () => {
     // Obtiene el valor del input
-    const searchTerm = document.getElementById("searchInput").value.toLowerCase().replace(/ /g, "-");
+    const searchTerm = document.getElementById("searchInput").value;
 
     // Realiza una solicitud a la API de Pokémon y actualiza el estado con los datos del Pokémon
     fetch(`https://pokeapi.co/api/v2/pokemon/${searchTerm}/`)
@@ -25,12 +49,35 @@ class Buscador extends Component {
         return response.json();
       })
       .then((data) => {
-        this.setState({ pokemonData: data, showModal: true });
+                // Agregar tiempo de carga
+          // Agregar tiempo de carga
+          toast.loading('Waiting...');
+
+          // Simular un retraso de 2 segundos (2000 milisegundos)
+          setTimeout(() => {
+            // Ocultar el toast de carga
+            toast.dismiss();
+
+            // Después de 2 segundos, mostrar el mensaje de error
+            this.setState({ pokemonData: data, showModal: true });
+            toast.success('Pokemon encontrado');
+          }, 2000);
+        
       })
       .catch((error) => {
-        console.error(error);
-        // Manejar errores, por ejemplo, mostrar un mensaje de error.
-      });
+        // Agregar tiempo de carga
+          // Agregar tiempo de carga
+          toast.loading('Waiting...');
+
+          // Simular un retraso de 2 segundos (2000 milisegundos)
+          setTimeout(() => {
+            // Ocultar el toast de carga
+            toast.dismiss();
+
+            // Después de 2 segundos, mostrar el mensaje de error
+            toast.error('Debes Seleccionar un Pokémon');
+          }, 500);
+              });
   };
 
   handleSubmit = (e) => {
@@ -43,28 +90,29 @@ class Buscador extends Component {
   };
 
   render() {
-    const { searchTerm, showModal, pokemonData } = this.state;
+    const { searchTerm, showModal, pokemonData, allPokemon } = this.state;
 
     return (
       <div>
-        <form onSubmit={this.handleSubmit}> {/* Maneja el evento onSubmit del formulario */}
-          <div className='row buscador'>
-            <div className='col-sm-10'>
-              <div className="input-group input-group-lg">
-                <input
-                  type="text"
-                  className="form-control"
-                  id="searchInput"
-                  aria-label="Sizing example input"
-                  aria-describedby="inputGroup-sizing-lg"
-                  placeholder="Ingrese Nombre o ID de pokemon"
-                />
-              </div>
+        <Toaster />
+        <form onSubmit={this.handleSubmit}>
+          <div className="row buscador">
+            <div className="col-sm-10">
+              {/* Renderiza el select con opciones de Pokémon y establece el ID */}
+              <select id="searchInput" className="form-select form-select-lg mb-3 custom-select" aria-label=".form-select-lg example">
+                <option value="">Selecciona un Pokémon</option>
+                {allPokemon.map((pokemon) => (
+                  <option key={pokemon.name} value={pokemon.name}>
+                    {pokemon.name}
+                  </option>
+                ))}
+              </select>
             </div>
-            <div className='col-sm-2'>
+            <div className="col-sm-2">
               <button type="button" className="btn btn-lg btn_mood" onClick={this.handleSearch}>
                 Buscar
               </button>
+              
             </div>
           </div>
         </form>

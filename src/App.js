@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import Buscador from './component/componentes/Buscador';
 import CardPokemon from './component/componentes/CardPokemon';
-
-
 import './App.css';
 import '../src/component/css/buscador.css'
 import '../src/component/css/cardpokemon.css'

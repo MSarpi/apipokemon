@@ -28,6 +28,10 @@
     color: #2A74BA;
 }
 
+.card-data-pokemon{
+    color: white;
+}
+
 @media (max-width: 900px) {
     .btn_mood{
         margin: 1rem 0 0 0; /* Auto para centrar horizontalmente dentro del contenedor */
@@ -49,3 +53,10 @@
         box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.3);
     }
 }
+
+.custom-select {
+    font-size: 4rem; /* Tamaño de fuente personalizado */
+    padding: 10px; /* Relleno personalizado */
+    width: 100%; /* Ancho personalizado */
+    /* Otros estilos personalizados según tus necesidades */
+  }

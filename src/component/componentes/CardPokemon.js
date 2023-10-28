@@ -4,7 +4,7 @@ import ImgReplace from '../img/remplazo_pk.jpg'
 import Paginacion from '../componentes/Paginacion';
 
 function CardPokemon() {
-    const { pokemonList, loading } = UseFetch('https://pokeapi.co/api/v2/pokemon?limit=100&offset=0'); 
+    const { pokemonList, loading } = UseFetch('https://pokeapi.co/api/v2/pokemon?limit=151&offset=0'); 
     console.log(pokemonList)
     if (loading) {
         return <div>Loading...</div>;
