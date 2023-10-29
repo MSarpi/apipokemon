@@ -52,3 +52,10 @@
   }
 }
 
+.carousel-control-prev{
+    align-items: end;
+}
+.carousel-control-next{
+    align-items: end;
+}
+

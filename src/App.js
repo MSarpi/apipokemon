@@ -29,8 +29,8 @@ function App() {
         <Buscador/>
         
       </header>
-      {/* <div class="container-fluid bg-secondary altura"></div>
-      <CardPokemon/> */}
+      <div class="container-fluid bg-secondary altura"></div>
+      <CardPokemon/>
     </div>
   );
 }

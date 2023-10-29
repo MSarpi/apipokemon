@@ -9,7 +9,20 @@ import 'swiper/css/pagination';
 
 // import required modules
 import { Pagination } from 'swiper/modules';
-
+import pk_1013 from '../img/1013.png';
+import pk_10143 from '../img/10143.png';
+import pk_10264 from '../img/10264.png';
+import pk_10265 from '../img/10264 - 10265.png';
+import pk_10266 from '../img/10266.png';
+import pk_10267 from '../img/10267.png';
+import pk_10268 from '../img/10268.png';
+import pk_10269 from '../img/10269.png';
+import pk_10270 from '../img/10270.png';
+import pk_10271 from '../img/10271.png';
+import pk_10272 from '../img/10272.png';
+import pk_10273 from '../img/10273.png';
+import pk_10274 from '../img/10274.png';
+import pk_10275 from '../img/10275.png';
 
 const Modal = ({ pokemon, onClose }) => {
   if (!pokemon) return null;
@@ -41,7 +54,6 @@ const Modal = ({ pokemon, onClose }) => {
                       </div>
                       </div>
                     </div>
-
                     <button className="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="prev">
                       <span className="carousel-control-prev-icon" aria-hidden="true"></span>
                       <span className="visually-hidden">Previous</span>
@@ -51,9 +63,40 @@ const Modal = ({ pokemon, onClose }) => {
                       <span className="visually-hidden">Next</span>
                     </button>
                     </div>
-                    ) : (
+                    ) :pokemon.name.endsWith('sinistcha') ? (
+                      <img className="card-img-top img_pokemon" src={pk_1013} alt={pokemon.name} />
+                      ) : pokemon.name.endsWith('mimikyu-busted') ? (
+                          <img className="card-img-top img_pokemon" src={pk_10143} alt={pokemon.name} />
+                      ) : pokemon.name.endsWith('mimikyu-totem-busted') ? (
+                          <img className="card-img-top img_pokemon" src={pk_10143} alt={pokemon.name} />
+                      ):pokemon.name.endsWith('koraidon-limited-build') ? (
+                          <img className="card-img-top img_pokemon" src={pk_10264} alt={pokemon.name} />
+                      ):pokemon.name.endsWith('koraidon-sprinting-build') ? (
+                          <img className="card-img-top img_pokemon" src={pk_10265} alt={pokemon.name} />
+                      ):pokemon.name.endsWith('koraidon-swimming-build') ? (
+                          <img className="card-img-top img_pokemon" width={"100%"} src={pk_10266} alt={pokemon.name} />
+                      ):pokemon.name.endsWith('koraidon-gliding-build') ? (
+                          <img className="card-img-top img_pokemon" width={"100%"} src={pk_10267} alt={pokemon.name} />
+                      ):pokemon.name.endsWith('miraidon-low-power-mode') ? (
+                          <img className="card-img-top img_pokemon" width={"100%"} src={pk_10268} alt={pokemon.name} />
+                      ):pokemon.name.endsWith('miraidon-drive-mode') ? (
+                          <img className="card-img-top img_pokemon" width={"100%"} src={pk_10269} alt={pokemon.name} />
+                      ):pokemon.name.endsWith('miraidon-aquatic-mode') ? (
+                          <img className="card-img-top img_pokemon" width={"100%"} src={pk_10270} alt={pokemon.name} />
+                      ):pokemon.name.endsWith('miraidon-glide-mode') ? (
+                          <img className="card-img-top img_pokemon" width={"100%"} src={pk_10271} alt={pokemon.name} />
+                      ):pokemon.name.endsWith('miraidon-glide-mode') ? (
+                          <img className="card-img-top img_pokemon" width={"100%"} src={pk_10271} alt={pokemon.name} />
+                      ):pokemon.name.endsWith('ursaluna-bloodmoon') ? (
+                          <img className="card-img-top img_pokemon" width={"100%"} src={pk_10272} alt={pokemon.name} />
+                      ):pokemon.name.endsWith('ogerpon-wellspring-mask') ? (
+                          <img className="card-img-top img_pokemon" width={"100%"} src={pk_10273} alt={pokemon.name} />
+                      ):pokemon.name.endsWith('ogerpon-hearthflame-mask') ? (
+                          <img className="card-img-top img_pokemon" width={"100%"} src={pk_10274} alt={pokemon.name} />
+                      ):pokemon.name.endsWith('ogerpon-cornerstone-mask') ? (
+                          <img className="card-img-top img_pokemon" width={"100%"} src={pk_10275} alt={pokemon.name} />
+                      ):(
                       <img className="card-img-top img_pokemon" src={pokemon.sprites.other['official-artwork'].front_default} alt={pokemon.name} />
-
                     )
                   }
  
@@ -172,79 +215,121 @@ const Modal = ({ pokemon, onClose }) => {
                   </div>
                 </div>
               </div>
-                  {pokemon.sprites && (
-                    <div className='card-data-pokemon'>
-                      <h5 style={{ textAlign: 'center' }}>Diseños de Generacion</h5>
-                      <hr />
-                      <Swiper
-                        slidesPerView={4}
-                        centeredSlides={true}
-                        spaceBetween={30}
-                        grabCursor={true}
-                        pagination={{
-                          clickable: true,
-                        }}
-                        modules={[Pagination]}
-                        className="mySwiper"
-                      >
-                        {pokemon.sprites.versions['generation-i']['red-blue'].front_default && (
-                          <SwiperSlide>
-                            <img
-                              src={pokemon.sprites.versions['generation-i']['red-blue'].front_default}
-                              width={'100%'}
-                              alt="Generation I"
-                            />
-                          </SwiperSlide>
-                        )}
-                        {pokemon.sprites.versions['generation-ii'].silver.front_default && (
-                          <SwiperSlide>
-                            <img
-                              src={pokemon.sprites.versions['generation-ii'].silver.front_default}
-                              width={'100%'}
-                              alt="Generation II"
-                            />
-                          </SwiperSlide>
-                        )}
-                        {pokemon.sprites.versions['generation-iii'].emerald.front_default && (
-                          <SwiperSlide>
-                            <img
-                              src={pokemon.sprites.versions['generation-iii'].emerald.front_default}
-                              width={'115%'}
-                              alt="Generation III"
-                            />
-                          </SwiperSlide>
-                        )}
-                        {pokemon.sprites.versions['generation-iv'].platinum.front_default && (
-                          <SwiperSlide>
-                            <img
-                              src={pokemon.sprites.versions['generation-iv'].platinum.front_default}
-                              width={'115%'}
-                              alt="Generation IV"
-                            />
-                          </SwiperSlide>
-                        )}
-                        {pokemon.sprites.versions['generation-v']['black-white'].animated.front_default && (
-                          <SwiperSlide>
-                            <img
-                              src={pokemon.sprites.versions['generation-v']['black-white'].animated.front_default}
-                              width={'100%'}
-                              alt="Generation V"
-                            />
-                          </SwiperSlide>
-                        )}
-                        {pokemon.sprites.versions['generation-vi']['x-y'].front_default && (
-                          <SwiperSlide>
-                            <img
-                              src={pokemon.sprites.versions['generation-vi']['x-y'].front_default}
-                              width={'100%'}
-                              alt="Generation VI"
-                            />
-                          </SwiperSlide>
-                        )}
-                        {/* Agrega más condicionales según sea necesario */}
-                      </Swiper>
-                    </div>
-                  )}
+              {pokemon.sprites.versions['generation-vii']['ultra-sun-ultra-moon'].front_default ? (
+                  <div className='card-data-pokemon'>
+                  <h5 style={{ textAlign: 'center' }}>Diseños de Generacion</h5>
+                  <hr />
+                  <Swiper slidesPerView={4} centeredSlides={true} spaceBetween={30}grabCursor={true} pagination={{clickable: true,}} modules={[Pagination]}className="mySwiper">
+                    {pokemon.sprites.versions['generation-i']['red-blue'].front_transparent && (
+                      <SwiperSlide>
+                        <img
+                          src={pokemon.sprites.versions['generation-i']['red-blue'].front_transparent}
+                          width={'100%'}
+                          alt="Generation I"
+                        />
+                        
+                      </SwiperSlide>
+                    )}
+                    {pokemon.sprites.versions['generation-ii'].crystal.front_transparent && (
+                      <SwiperSlide>
+                        <img
+                          src={pokemon.sprites.versions['generation-ii'].crystal.front_transparent}
+                          width={'100%'}
+                          alt="Generation II"
+                        />
+                        
+                      </SwiperSlide>
+                    )}
+                    {pokemon.sprites.versions['generation-ii'].gold.front_transparent && (
+                      <SwiperSlide>
+                        <img
+                          src={pokemon.sprites.versions['generation-ii'].gold.front_transparent}
+                          width={'100%'}
+                          alt="Generation II"
+                        />
+                        
+                      </SwiperSlide>
+                    )}
+                    {pokemon.sprites.versions['generation-ii'].silver.front_transparent && (
+                      <SwiperSlide>
+                        <img
+                          src={pokemon.sprites.versions['generation-ii'].silver.front_transparent}
+                          width={'100%'}
+                          alt="Generation II"
+                        />
+                        
+                      </SwiperSlide>
+                    )}
+                    {pokemon.sprites.versions['generation-iii'].emerald.front_default && (
+                      <SwiperSlide>
+                        <img
+                          src={pokemon.sprites.versions['generation-iii'].emerald.front_default}
+                          width={'115%'}
+                          alt="Generation III"
+                        />
+                        
+                      </SwiperSlide>
+                    )}
+                    {pokemon.sprites.versions['generation-iv']['diamond-pearl'].front_default && (
+                      <SwiperSlide>
+                        <img
+                          src={pokemon.sprites.versions['generation-iv']['diamond-pearl'].front_default}
+                          width={'115%'}
+                          alt="Generation IV"
+                        />
+                      </SwiperSlide>
+                    )}
+                    {pokemon.sprites.versions['generation-iv']['heartgold-soulsilver'].front_default && (
+                      <SwiperSlide>
+                        <img
+                          src={pokemon.sprites.versions['generation-iv']['heartgold-soulsilver'].front_default}
+                          width={'115%'}
+                          alt="Generation IV"
+                        />
+                      </SwiperSlide>
+                    )}
+                    {pokemon.sprites.versions['generation-iv'].platinum.front_default && (
+                      <SwiperSlide>
+                        <img
+                          src={pokemon.sprites.versions['generation-iv'].platinum.front_default}
+                          width={'115%'}
+                          alt="Generation IV"
+                        />
+                      </SwiperSlide>
+                    )}
+                    {pokemon.sprites.versions['generation-v']['black-white'].animated.front_default && (
+                      <SwiperSlide>
+                        <img
+                          src={pokemon.sprites.versions['generation-v']['black-white'].animated.front_default}
+                          width={'100%'}
+                          alt="Generation V"
+                        />
+                      </SwiperSlide>
+                    )}
+                    {pokemon.sprites.versions['generation-vi']['x-y'].front_default && (
+                      <SwiperSlide>
+                        <img
+                          src={pokemon.sprites.versions['generation-vi']['x-y'].front_default}
+                          width={'100%'}
+                          alt="Generation VI"
+                        />
+                      </SwiperSlide>
+                    )}
+                    {pokemon.sprites.versions['generation-vii']['ultra-sun-ultra-moon'].front_default && (
+                      <SwiperSlide>
+                        <img
+                          src={pokemon.sprites.versions['generation-vii']['ultra-sun-ultra-moon'].front_default}
+                          width={'110%'}
+                          alt="Generation VII"
+                        />
+                      </SwiperSlide>
+                    )}
+                    {/* Agrega más condicionales según sea necesario */}
+                  </Swiper>
+                </div>
+                ) : (
+                  <div/>
+                )}
 
             </div>
             <div className="modal-footer footer-mood-buscador">
