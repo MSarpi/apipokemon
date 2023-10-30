@@ -100,6 +100,7 @@ class Buscador extends Component {
         <Toaster />
         <form onSubmit={this.handleSubmit}>
           <div className="row buscador">
+
             <div className="col-sm-10 " >
               {/* Renderiza el select con opciones de Pokémon y establece el ID */}
 

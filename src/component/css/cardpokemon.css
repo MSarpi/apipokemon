@@ -15,9 +15,413 @@
     width: 100%;
 }
 
+.card-body-mood{
+    padding: 0.5rem;
+    border: 2px solid #2A74BA;
+    border-radius: 10px;
+    background-color: #FFCB05;
+}
+
+.card-body-titulo{
+    padding: 0.5rem;
+    border: 1px solid #ffffff;
+    border-radius: 10px;
+    color: white;
+}
+
 @media (max-width: 900px) {
     .card_mood{
 
         height: 34rem;
     }
 }
+.card-body{
+    margin-top: .5rem;
+}
+
+.background-common{
+    margin: 1rem;
+    padding: 1rem;
+    animation: animate_blod 20s linear infinite;
+    z-index: 1;
+}
+
+.card-name-pokemon{
+    font-size: 1.2rem;
+}
+
+.card-pokemon-border {
+    padding: 0 1rem 1rem 1rem;
+    border: 1rem solid #05478B;
+    border-radius: 10px;
+    background-color: #ffffff;
+    margin-bottom: 1rem;
+    /* background-color: rgb(241, 241, 241); */
+    /* background-image: linear-gradient(70deg, #1f5588 20%, #3da1ff 100%); */
+    background-image: url("../img/tcg_card_back.jpg");
+    background-size: cover; /* Ajusta la imagen de fondo al tamaño del contenedor */
+    background-repeat: no-repeat; /* Evita la repetición de la imagen */
+    background-position: center; /* Centra la imagen de fondo en el contenedor */
+}
+
+.background-ice {
+    background-image: linear-gradient(70deg, #D8F0FA 20%, #08ee00 100%);
+}
+
+.background-steel {
+    background-image: linear-gradient(70deg, #43BD94 20%, #645000 100%);
+}
+
+.background-dark {
+    background-image: linear-gradient(70deg, #61035b 20%, #793c75 100%);
+}
+
+.background-dragon {
+    background-image: linear-gradient(70deg, #499eff 20%, #990052 100%);
+}
+
+.background-ghost {
+    background-image: linear-gradient(70deg, #906791 20%, #8a2c83 100%);
+}
+
+.background-bug {
+    background-image: linear-gradient(70deg, #616912 30%, #B7C543 100%);
+}
+
+.background-electric {
+    background-image: linear-gradient(70deg, #9b7c00 30%, #FFCB05 100%);
+}
+
+.background-fairy {
+    background-image: linear-gradient(70deg, #793c75 30%, #faa1f4 100%);
+}
+
+.background-fire {
+    background-image: linear-gradient(70deg, #490200 0%, #ff0000 100%);
+}
+
+.background-ground {
+    background-image: linear-gradient(70deg, #645000 30%, #bb9600 100%);
+}
+
+.background-grass {
+    background-image: linear-gradient(70deg, #114e0f 0%, #08ee00 100%);
+}
+
+.background-normal {
+    background-image: linear-gradient(70deg, #6b6b6b 30%, #acacac 100%);
+}
+
+.background-poison {
+    background-image: linear-gradient(70deg, #6e004a 30%, #bb007d 100%);
+}
+
+.background-psychic {
+    background-image: linear-gradient(70deg, #990052 20%, #F71D92 100%);
+}
+
+.background-water {
+    background-image: linear-gradient(70deg, #00054b 0%, #0084ff 100%);
+}
+
+.background-bug-flying {
+    background-image: linear-gradient(70deg, #616912 30%, #499eff 100%);
+}
+
+.background-dragon {
+    background-image: linear-gradient(70deg, #253f44 20%, #448A95 100%);
+}
+
+.background-bug-poison {
+    background-image: linear-gradient(70deg, #616912 30%, #bb007d 100%);
+}
+
+.background-bug-grass {
+    background-image: linear-gradient(70deg, #616912 30%, #1e831a 100%);
+}
+
+.background-electric-steel {
+    background-image: linear-gradient(70deg, #FFCB05 20%, #43BD94 100%);
+}
+
+.background-fighting {
+    background-image: linear-gradient(70deg, #81311b 30%, #ee6640 100%);
+}
+
+.background-fire-flying {
+    background-image: linear-gradient(70deg, #831d1a 30%, #499eff 100%);
+}
+
+.background-grass-poison {
+    background-image: linear-gradient(70deg, #1e831a 0%, #bb007d 100%);
+}
+
+.background-ground-rock {
+    background-image: linear-gradient(70deg, #bb9600 20%, #8B3E22 100%);
+}
+
+.background-normal-fairy {
+    background-image: linear-gradient(70deg, #6b6b6b 30%, #faa1f4 100%);
+}
+
+.background-normal-flying {
+    background-image: linear-gradient(70deg, #acacac 30%, #499eff 100%);
+}
+
+.background-poison-flying {
+    background-image: linear-gradient(70deg, #793c75 30%, #499eff 100%);
+}
+
+.background-water-fighting {
+    background-image: linear-gradient(70deg, #0061bd 20%, #ff592b 100%);
+}
+
+.background-water-poison {
+    background-image: linear-gradient(70deg, #0061bd 20%, #8a2c83 100%);
+}
+
+.background-water-psychic {
+    background-image: linear-gradient(70deg, #0061bd 20%, #F71D92 100%);
+}
+
+.background-water-ice {
+    background-image: linear-gradient(70deg, #0061bd 20%, #D8F0FA 100%);
+}
+
+.background-rock-ground {
+    background-image: linear-gradient(70deg, #8B3E22 20%, #bb9600 100%);
+}
+
+.background-ghost-poison {
+    background-image: linear-gradient(70deg, #906791 20%, #61035b 100%);
+}
+
+.background-grass-psychic {
+    background-image: linear-gradient(70deg, #1e831a 20%, #FFCB05 100%);
+}
+
+.background-psychic-fairy {
+    background-image: linear-gradient(70deg, #F71D92 20%, #faa1f4 100%);
+}
+
+.background-ice-psychic {
+    background-image: linear-gradient(70deg, #7cc1df 20%, #F71D92 100%);
+}
+
+.background-water-flying {
+    background-image: linear-gradient(70deg, #003e77 20%, #a8d1ff 100%);
+}
+
+.background-rock-water {
+    background-image: linear-gradient(70deg, #8B3E22 20%, #005cb3 100%);
+}
+
+.background-rock-flying {
+    background-image: linear-gradient(70deg, #8B3E22 20%, #a8d1ff 100%);
+}
+
+.background-ice-flying {
+    background-image: linear-gradient(70deg, #7cc1df 20%, #004ea7 100%);
+}
+
+.background-electric-flying {
+    background-image: linear-gradient(70deg, #FFCB05 20%, #004ea7 100%);
+}
+
+.background-dragon-flying {
+    background-image: linear-gradient(70deg, #448A95 20%, #004ea7 100%);
+}
+
+.background-ice-steel {
+    background-image: linear-gradient(70deg, #D8F0FA 20%, #43BD94 100%);
+}
+
+.background-ice-psychic {
+    background-image: linear-gradient(70deg, #D8F0FA 20%, #F71D92 100%);
+}
+
+.background-steel-fighting {
+    background-image: linear-gradient(70deg, #43BD94 20%, #ff592b 100%);
+}
+
+.background-steel-ground {
+    background-image: linear-gradient(70deg, #43BD94 20%, #645000 100%);
+}
+
+.background-ice-water {
+    background-image: linear-gradient(70deg, #D8F0FA 20%, #0084ff 100%);
+}
+
+.background-ice-fighting {
+    background-image: linear-gradient(70deg, #D8F0FA 20%, #ff592b 100%);
+}
+
+.background-steel-dragon {
+    background-image: linear-gradient(70deg, #43BD94 20%, #499eff 100%);
+}
+
+.background-steel-dark {
+    background-image: linear-gradient(70deg, #43BD94 20%, #61035b 100%);
+}
+
+.background-dark-dragon {
+    background-image: linear-gradient(70deg, #61035b 20%, #499eff 100%);
+}
+
+.background-ghost-dark {
+    background-image: linear-gradient(70deg, #906791 20%, #61035b 100%);
+}
+
+.background-poison-ground{
+    background-image: linear-gradient(70deg, #61035b 20%, #a78500 100%);
+}
+
+.background-water-electric{
+    background-image: linear-gradient(70deg, #0084ff 20%, #FFCB05 100%);
+}
+.background-ice-steel {
+    background-image: linear-gradient(70deg, #D8F0FA 20%, #43BD94 100%);
+}
+
+.background-ice-psychic {
+    background-image: linear-gradient(70deg, #D8F0FA 20%, #F71D92 100%);
+}
+
+.background-steel-fighting {
+    background-image: linear-gradient(70deg, #43BD94 20%, #ff592b 100%);
+}
+
+.background-steel-ground {
+    background-image: linear-gradient(70deg, #43BD94 20%, #645000 100%);
+}
+
+.background-ice-water {
+    background-image: linear-gradient(70deg, #D8F0FA 20%, #0084ff 100%);
+}
+
+/* Combinaciones de tipos (continuación) */
+.background-steel-electric {
+    background-image: linear-gradient(70deg, #43BD94 20%, #FFCB05 100%);
+}
+
+.background-steel-dragon {
+    background-image: linear-gradient(70deg, #43BD94 20%, #499eff 100%);
+}
+
+.background-steel-ghost {
+    background-image: linear-gradient(70deg, #43BD94 20%, #906791 100%);
+}
+
+.background-steel-fairy {
+    background-image: linear-gradient(70deg, #43BD94 20%, #faa1f4 100%);
+}
+
+.background-dark-fighting {
+    background-image: linear-gradient(70deg, #61035b 20%, #ee6640 100%);
+}
+
+.background-dark-ground {
+    background-image: linear-gradient(70deg, #61035b 20%, #645000 100%);
+}
+
+.background-dark-rock {
+    background-image: linear-gradient(70deg, #61035b 20%, #8B3E22 100%);
+}
+
+.background-dark-steel {
+    background-image: linear-gradient(70deg, #61035b 20%, #43BD94 100%);
+}
+
+.background-dragon-fighting {
+    background-image: linear-gradient(70deg, #499eff 20%, #ee6640 100%);
+}
+
+.background-dragon-ground {
+    background-image: linear-gradient(70deg, #499eff 20%, #645000 100%);
+}
+
+.background-dragon-rock {
+    background-image: linear-gradient(70deg, #499eff 20%, #8B3E22 100%);
+}
+
+.background-dragon-steel {
+    background-image: linear-gradient(70deg, #499eff 20%, #43BD94 100%);
+}
+
+/* Combinaciones de tipos (continuación) */
+.background-ghost-electric {
+    background-image: linear-gradient(70deg, #906791 20%, #FFCB05 100%);
+}
+
+.background-ghost-fighting {
+    background-image: linear-gradient(70deg, #906791 20%, #ee6640 100%);
+}
+
+.background-ghost-ground {
+    background-image: linear-gradient(70deg, #906791 20%, #645000 100%);
+}
+
+.background-ghost-rock {
+    background-image: linear-gradient(70deg, #906791 20%, #8B3E22 100%);
+}
+
+.background-ghost-steel {
+    background-image: linear-gradient(70deg, #906791 20%, #43BD94 100%);
+}
+
+.background-ghost-fairy {
+    background-image: linear-gradient(70deg, #906791 20%, #faa1f4 100%);
+}
+
+.background-bug-electric {
+    background-image: linear-gradient(70deg, #616912 30%, #FFCB05 100%);
+}
+
+.background-bug-fighting {
+    background-image: linear-gradient(70deg, #616912 30%, #ee6640 100%);
+}
+
+.background-bug-ground {
+    background-image: linear-gradient(70deg, #616912 30%, #645000 100%);
+}
+
+.background-bug-rock {
+    background-image: linear-gradient(70deg, #616912 30%, #8B3E22 100%);
+}
+
+.background-bug-steel {
+    background-image: linear-gradient(70deg, #616912 30%, #43BD94 100%);
+}
+
+.background-bug-fairy {
+    background-image: linear-gradient(70deg, #616912 30%, #faa1f4 100%);
+}
+
+/* Continúa con las demás combinaciones siguiendo el mismo patrón */
+
+/* Continúa con las demás combinaciones siguiendo el mismo patrón */
+
+
+
+@keyframes animate_blod{
+    0%, 100%{
+
+      border-radius: 90% 55% 70% 35% / 70% 30% 90% 40%;
+    }
+  
+    25%{
+
+      border-radius: 55% 45% 30% 35% / 50% 30% 60% 10%;
+    }
+  
+    50%{
+
+      border-radius: 65% 35% 35% 65% / 40% 60% 30% 70%;
+    }
+  
+    75%{
+
+      border-radius: 35% 65% 60% 40% / 70% 30% 40% 60%;
+    }
+  }
+

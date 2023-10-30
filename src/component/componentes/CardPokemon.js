@@ -1,7 +1,10 @@
 import React from 'react';
 import { UseFetch } from '../api_conexion/UseFetch';
+import $ from 'jquery';
+import 'select2'; 
+import toast, { Toaster } from 'react-hot-toast';
 import ImgReplace from '../img/remplazo_pk.jpg'
-import Paginacion from '../componentes/Paginacion';
+
 import pk_1013 from '../img/1013.png';
 import pk_10143 from '../img/10143.png';
 import pk_10264 from '../img/10264.png';
@@ -17,9 +20,10 @@ import pk_10273 from '../img/10273.png';
 import pk_10274 from '../img/10274.png';
 import pk_10275 from '../img/10275.png';
 
-function CardPokemon() {
-    const { pokemonList, loading } = UseFetch('https://pokeapi.co/api/v2/pokemon?limit=151&offset=0');
 
+
+function CardPokemon() {
+    const { pokemonList, loading } = UseFetch('https://pokeapi.co/api/v2/pokemon?limit=20&offset=0');
     return ( 
         <div>
             {loading ? (
@@ -28,23 +32,20 @@ function CardPokemon() {
             ) : (
             // Si loading es false, muestra el contenido una vez que la solicitud esté completa
             <div>
-                        <div className='container'>
-            <div className='row'>
+            <div className='container'>
+            <div className='row card-pokemon-border-mood'>
                 {pokemonList
                 // .filter((pokemon) => pokemon.sprites.front_default)
                 .map((pokemon, index) => (
-                    <div className='col-sm-3' key={index}>
+                    <div className='col-md-4 ' key={index}>
                         {pokemon.sprites.other['official-artwork'].front_default ? (
-
-                            <div className="card card_mood">
-                            <div>
-
-                                <img className="card-img-top img_pokemon" src={pokemon.sprites.other['official-artwork'].front_default} alt={pokemon.name} />
-
-                            </div>
-                            <div className="card-body">
+                            
+                            <div className="card-pokemon-border">
+                            <div className="card-body card-body-titulo">
                                 <input type="number" hidden className="form-control nombre_pokemon" value={pokemon.id}/>
-                                <strong><p className="card-title">
+                                <strong><p style={{textAlign: "center"}} className="card-title card-name-pokemon">
+                                
+                                
                                 {pokemon.name
                                     .split('-') // Dividir la cadena en un array en cada "-"
                                     .map((word, index) => 
@@ -62,21 +63,54 @@ function CardPokemon() {
                                     .join(' ')
                                     }
                                     </p></strong> 
-                                {/* <strong>Pokemon ID: </strong><span>{pokemon.id}</span>
-                                <br/>
-                                <strong>Peso: </strong><span>{(pokemon.weight / 10).toLocaleString()} kg</span>
-                                <br/>
-                                <strong>Tipo: </strong>
+                            </div>
+                            {
+                                // Casos con un solo tipo
+                                (pokemon.types[0] && !pokemon.types[1]) && (
+                                    <div className={`background-${pokemon.types[0].type.name} card-pokemon background-common`}>
+                                    <img className="card-img-top img_pokemon" src={pokemon.sprites.other['official-artwork'].front_default} alt={pokemon.name} />
+                                    </div>
+                                )
+                            }
+
+                            {
+                                // Casos con dos tipos
+                                (pokemon.types[0] && pokemon.types[1]) && (
+                                    <div className={`background-${pokemon.types[0].type.name}-${pokemon.types[1].type.name} card-pokemon background-common`}>
+                                    <img className="card-img-top img_pokemon" src={pokemon.sprites.other['official-artwork'].front_default} alt={pokemon.name} />
+                                    </div>
+                                )
+                            }
+
+                            {
+                            // Caso por defecto (cuando no coincide con ninguno de los casos anteriores)
+                                (!pokemon.types[0]) && (
+                                    <div>
+                                    <img className="card-img-top img_pokemon" src={pokemon.sprites.other['official-artwork'].front_default} alt={pokemon.name} />
+                                    </div>
+                                )
+                            }
+                              <div className="card-body card-body-mood">
+                                {/* <p>
                                 <span> 
                                     {pokemon.types[0].type.name}
                                     {pokemon.types.length > 1 ? ` / ${pokemon.types[1].type.name}` : ''}
                                 </span>
-                                <br/>
-                                <strong>Habilidades: </strong>
-                                <span> 
-                                    {pokemon.abilities[0].ability.name}
-                                    {pokemon.abilities.length > 1 ? ` / ${pokemon.abilities[1].ability.name}` : ''}
-                                </span> */}
+                                </p> */}
+                                <div className='d-grid gap-2'>
+                                
+
+                                <button className='btn btn-primary btn-lg' onClick={() =>  
+                                     
+                                    setTimeout(() => {
+                            
+                                        // Después de 2 segundos, mostrar el mensaje de error
+                                        toast.error('Función aun no disponible');
+                                      })}><Toaster />Ver mas</button>
+
+                                
+                                </div>
+                                
                             </div>
                         </div>
                         ):(
@@ -121,7 +155,7 @@ function CardPokemon() {
 
                             <div className="card-body">
                                 <input type="number" hidden className="form-control nombre_pokemon" value={pokemon.id}/>
-                                <strong><p className="card-title">{pokemon.name
+                                <strong><h5 className="card-title">{pokemon.name
                                     .split('-') // Dividir la cadena en un array en cada "-"
                                     .map((word, index) => 
                                         index === 0 // Verificar si es la primera palabra
@@ -136,7 +170,7 @@ function CardPokemon() {
                                         : word.charAt(0).toUpperCase() + word.slice(1) // Convertir la primera letra en mayúscula
                                     )
                                     .join(' ')
-                                    }</p></strong> 
+                                    }</h5></strong> 
                                 {/* <strong>Pokemon ID: </strong><span>{pokemon.id}</span> */}
                                 {/* <br/>
                                 <strong>Peso: </strong><span>{(pokemon.weight / 10).toLocaleString()} kg</span>
@@ -147,8 +181,8 @@ function CardPokemon() {
                                     {pokemon.types.length > 1 ? ` / ${pokemon.types[1].type.name}` : ''}
                                 </span>
                                 <br/>
-                                <strong>Habilidades: </strong>
-                                <span> 
+                                <strong>Habilidades: </strong> */}
+                                {/* <span> 
                                     {pokemon.abilities[0].ability.name}
                                     {pokemon.abilities.length > 1 ? ` / ${pokemon.abilities[1].ability.name}` : ''}
                                 </span> */}

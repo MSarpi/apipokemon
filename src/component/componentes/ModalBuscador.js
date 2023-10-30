@@ -28,30 +28,32 @@ const Modal = ({ pokemon, onClose }) => {
   if (!pokemon) return null;
   
     return (
-      <div className="modal fade show" style={{ display: 'block' }} id="exampleModalScrollable" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
+      <div className="modal fade show modal_moood" style={{ display: 'block' }} id="exampleModalScrollable" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
         <div className="modal-dialog modal-dialog-centered modal-lg modal-dialog-scrollable" role="document">
           <div className="modal-content">
             <div className="modal-header header-mood-buscador" >
               <h5  className="modal-title">{pokemon.name}</h5>
             </div>
-            <div className="modal-body">
-              <div className='row'>  
-                <div className='col-sm-6'> 
+            <div className="modal-body ">
+              <div className='row '> 
+                <div className='col-sm-6'>
+                  
                   {pokemon.sprites.other['official-artwork'].front_shiny ? (
 
-                    <div id="carouselExampleDark" className="carousel carousel-dark slide" data-bs-ride="carousel">
-                    <div class="carousel-inner">
+                    <div id="carouselExampleDark" className="carousel carousel-dark slide " data-bs-ride="carousel">
+                      
+                    <div class="carousel-inner ">
                       <div class="carousel-item active" data-bs-interval="2000">
-                      <img className="card-img-top img_pokemon" src={pokemon.sprites.other['official-artwork'].front_default} alt={pokemon.name} />
-                      <div class="">
-                        <h5 style={{ textAlign: 'center' }}>Normal</h5>
-                      </div>
+                        <img className="card-img-top img_pokemon" src={pokemon.sprites.other['official-artwork'].front_default} alt={pokemon.name} />
+                        <div class="">
+                          <h5 style={{ textAlign: 'center' }}>Normal</h5>
+                        </div>
                       </div>
                       <div class="carousel-item" data-bs-interval="2000">
-                      <img className="card-img-top img_pokemon" src={pokemon.sprites.other['official-artwork'].front_shiny} alt={pokemon.name} />
-                      <div class="">
-                        <h5 style={{ textAlign: 'center' }}>Shiny</h5>
-                      </div>
+                        <img className="card-img-top img_pokemon" src={pokemon.sprites.other['official-artwork'].front_shiny} alt={pokemon.name} />
+                        <div class="">
+                          <h5 style={{ textAlign: 'center' }}>Shiny</h5>
+                        </div>
                       </div>
                     </div>
                     <button className="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="prev">
@@ -99,7 +101,7 @@ const Modal = ({ pokemon, onClose }) => {
                       <img className="card-img-top img_pokemon" src={pokemon.sprites.other['official-artwork'].front_default} alt={pokemon.name} />
                     )
                   }
- 
+                 
                 </div>
                 <div className='col-sm-6 '>
                   <div className='card-data-pokemon'>
