@@ -24,10 +24,13 @@
 
 .card-body-titulo{
     padding: 0.5rem;
-    border: 1px solid #ffffff;
+    border: 5px solid #05478B;
     border-radius: 10px;
-    color: white;
+    color: #05478B;
+    background-color: white;
 }
+
+
 
 @media (max-width: 900px) {
     .card_mood{
@@ -62,6 +65,11 @@
     background-size: cover; /* Ajusta la imagen de fondo al tamaño del contenedor */
     background-repeat: no-repeat; /* Evita la repetición de la imagen */
     background-position: center; /* Centra la imagen de fondo en el contenedor */
+}
+
+.enumeracion_card{
+    text-align: right;
+
 }
 
 .background-ice {

@@ -29,7 +29,7 @@ function App() {
         <Buscador/>
         
       </header>
-      <div class="container-fluid bg-secondary altura"></div>
+      <div className="container-fluid bg-secondary altura"></div>
       <CardPokemon/>
     </div>
   );

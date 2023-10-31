@@ -21,11 +21,9 @@ class Buscador extends Component {
     fetch('https://pokeapi.co/api/v2/pokemon?limit=100000&offset=0')
       .then((response) => response.json())
       .then((data) => {
-        console.log(data)
+        // console.log(data)
         this.setState({ allPokemon: data.results });
       });
-
-    
   }
 
   componentWillUnmount() {
@@ -102,9 +100,8 @@ class Buscador extends Component {
           <div className="row buscador">
 
             <div className="col-sm-10 " >
-              {/* Renderiza el select con opciones de Pokémon y establece el ID */}
 
-              <select id="searchInput" className="form-control select2" aria-label=".form-select-lg example">
+              <select id="searchInput" className="form-control select2" aria-label=".form-select-lg example" > 
                 <option className='select2' value="">Ingrese Nombre o ID Pokemon</option>
                 {allPokemon.map((pokemon) => {
                   const urlParts = pokemon.url.split('/'); // Divide la URL por las barras "/"

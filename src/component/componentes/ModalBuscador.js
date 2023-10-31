@@ -42,16 +42,16 @@ const Modal = ({ pokemon, onClose }) => {
 
                     <div id="carouselExampleDark" className="carousel carousel-dark slide " data-bs-ride="carousel">
                       
-                    <div class="carousel-inner ">
-                      <div class="carousel-item active" data-bs-interval="2000">
+                    <div className="carousel-inner ">
+                      <div className="carousel-item active" data-bs-interval="2000">
                         <img className="card-img-top img_pokemon" src={pokemon.sprites.other['official-artwork'].front_default} alt={pokemon.name} />
-                        <div class="">
+                        <div className="">
                           <h5 style={{ textAlign: 'center' }}>Normal</h5>
                         </div>
                       </div>
-                      <div class="carousel-item" data-bs-interval="2000">
+                      <div className="carousel-item" data-bs-interval="2000">
                         <img className="card-img-top img_pokemon" src={pokemon.sprites.other['official-artwork'].front_shiny} alt={pokemon.name} />
-                        <div class="">
+                        <div className="">
                           <h5 style={{ textAlign: 'center' }}>Shiny</h5>
                         </div>
                       </div>
@@ -159,8 +159,8 @@ const Modal = ({ pokemon, onClose }) => {
                       <strong><p style={{ textAlign: 'right'}}>HP:</p></strong>
                       </div>
                       <div className='col-8'>
-                        <div class="progress">
-                          <div class="progress-bar" role="progressbar" style={{ width: `${(pokemon.stats[0].base_stat / 120) * 100}%`}}  aria-valuenow={pokemon.stats[0].base_stat} aria-valuemin="0" aria-valuemax="120">{pokemon.stats[0].base_stat}</div>
+                        <div className="progress">
+                          <div className="progress-bar" role="progressbar" style={{ width: `${(pokemon.stats[0].base_stat / 120) * 100}%`}}  aria-valuenow={pokemon.stats[0].base_stat} aria-valuemin="0" aria-valuemax="120">{pokemon.stats[0].base_stat}</div>
                         </div>
                       </div>
                     </div>
@@ -169,8 +169,8 @@ const Modal = ({ pokemon, onClose }) => {
                         <strong><p style={{ textAlign: 'right'}}>Ataque E:</p></strong>
                       </div>
                       <div className='col-8'>
-                        <div class="progress">
-                          <div class="progress-bar" role="progressbar" style={{width: `${(pokemon.stats[1].base_stat / 190) * 100}%`}} aria-valuenow={pokemon.stats[1].base_stat} aria-valuemin="0" aria-valuemax="190">{pokemon.stats[1].base_stat}</div>
+                        <div className="progress">
+                          <div className="progress-bar" role="progressbar" style={{width: `${(pokemon.stats[1].base_stat / 190) * 100}%`}} aria-valuenow={pokemon.stats[1].base_stat} aria-valuemin="0" aria-valuemax="190">{pokemon.stats[1].base_stat}</div>
                         </div>
                       </div>
                     </div>
@@ -179,8 +179,8 @@ const Modal = ({ pokemon, onClose }) => {
                         <strong><p style={{ textAlign: 'right'}}>Ataque E:</p></strong>
                       </div>
                       <div className='col-8'>
-                        <div class="progress">
-                          <div class="progress-bar" role="progressbar" style={{width: `${(pokemon.stats[3].base_stat / 194) * 100}%`}} aria-valuenow={pokemon.stats[3].base_stat} aria-valuemin="0" aria-valuemax="194">{pokemon.stats[3].base_stat}</div>
+                        <div className="progress">
+                          <div className="progress-bar" role="progressbar" style={{width: `${(pokemon.stats[3].base_stat / 194) * 100}%`}} aria-valuenow={pokemon.stats[3].base_stat} aria-valuemin="0" aria-valuemax="194">{pokemon.stats[3].base_stat}</div>
                         </div>
                       </div>
                     </div>
@@ -189,8 +189,8 @@ const Modal = ({ pokemon, onClose }) => {
                         <strong><p style={{ textAlign: 'right'}}>Defensa:</p></strong>
                       </div>
                       <div className='col-8'>
-                        <div class="progress">
-                          <div class="progress-bar" role="progressbar" style={{width: `${(pokemon.stats[2].base_stat / 230) * 100}%`}} aria-valuenow={pokemon.stats[2].base_stat} aria-valuemin="0" aria-valuemax="230">{pokemon.stats[2].base_stat}</div>
+                        <div className="progress">
+                          <div className="progress-bar" role="progressbar" style={{width: `${(pokemon.stats[2].base_stat / 230) * 100}%`}} aria-valuenow={pokemon.stats[2].base_stat} aria-valuemin="0" aria-valuemax="230">{pokemon.stats[2].base_stat}</div>
                         </div>
                       </div>
                     </div>
@@ -199,8 +199,8 @@ const Modal = ({ pokemon, onClose }) => {
                         <strong><p style={{ textAlign: 'right'}}>Defensa S:</p></strong>
                       </div>
                       <div className='col-8'>
-                        <div class="progress">
-                          <div class="progress-bar" role="progressbar" style={{width: `${(pokemon.stats[4].base_stat / 230) * 100}%`}} aria-valuenow={pokemon.stats[4].base_stat} aria-valuemin="0" aria-valuemax="230">{pokemon.stats[4].base_stat}</div>
+                        <div className="progress">
+                          <div className="progress-bar" role="progressbar" style={{width: `${(pokemon.stats[4].base_stat / 230) * 100}%`}} aria-valuenow={pokemon.stats[4].base_stat} aria-valuemin="0" aria-valuemax="230">{pokemon.stats[4].base_stat}</div>
                         </div>
                       </div>
                     </div>
@@ -209,8 +209,8 @@ const Modal = ({ pokemon, onClose }) => {
                         <strong><p style={{ textAlign: 'right'}}>Velocidad:</p></strong>
                       </div>
                       <div className='col-8'>
-                        <div class="progress">
-                          <div class="progress-bar" role="progressbar" style={{width: `${(pokemon.stats[5].base_stat / 180) * 100}%`}} aria-valuenow={pokemon.stats[5].base_stat} aria-valuemin="0" aria-valuemax="180">{pokemon.stats[5].base_stat}</div>
+                        <div className="progress">
+                          <div className="progress-bar" role="progressbar" style={{width: `${(pokemon.stats[5].base_stat / 180) * 100}%`}} aria-valuenow={pokemon.stats[5].base_stat} aria-valuemin="0" aria-valuemax="180">{pokemon.stats[5].base_stat}</div>
                         </div>
                       </div>
                     </div>
