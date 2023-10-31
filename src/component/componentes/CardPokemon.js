@@ -23,45 +23,93 @@ import Pagination from './Pagination';
 
 
 function CardPokemon() {
-
-    const totalPokemon = 1300;
-    const pokemonPerPage = 9; // Cantidad de Pokémon por página
-
-    const [currentPage, setCurrentPage] = useState(1);
-    const [filteredPokemonList, setFilteredPokemonList] = useState([]);
-
-    
-    const { TypeList, loadingType } = UseFetch(`https://pokeapi.co/api/v2/type`);
-
-    const [selectedValue1, setSelectedValue1] = useState("");
-    const [selectedValue2, setSelectedValue2] = useState("");
-
-
+    const tuRef = useRef(); 
     const [pagina, setPagina] = useState(1);
     const elementosPorPagina = 20; 
     const [cargando, setCargando] = useState(false);
 
-    const tuRef = useRef(); 
-    const { pokemonList, loading } = UseFetch(`https://pokeapi.co/api/v2/pokemon?limit=${totalPokemon}&offset=0`);
-    const obtenerMasPokemones = async () => {
-    if (cargando) return; // Evitar solicitudes simultáneas
-    setCargando(true);
-    const respuesta = await fetch(
-        `https://pokeapi.co/api/v2/pokemon?limit=${elementosPorPagina}&offset=${(pagina - 1) * elementosPorPagina}`
-    );
-    const datos = await respuesta.json();
-    // Procesar los datos y agregarlos a la lista existente de Pokémon
-    setPagina(pagina + 1);
-    setCargando(false);
+    const [selectedValue1, setSelectedValue1] = useState("");
+    const [selectedValue2, setSelectedValue2] = useState("");
+
+    const pokemonPerPage = 9; // Cantidad de Pokémon por página
+
+    const [page, setPage] = useState(1);
+    const resultsPerPage = 100000; // Cambia esto al número deseado de resultados por página
+    
+    const [currentPage, setCurrentPage] = useState(1);
+    const [filteredPokemonList, setFilteredPokemonList] = useState([]);
+
+    const [selectedValue, setSelectedValue] = useState('');
+    const [inputValue, setInputValue] = useState(0);
+  
+    const handleSelectChange = (event) => {
+      const value = event.target.value;
+      setInputValue(value);
+  
+      if (value === '151') {
+        setSelectedValue(0);
+      }
+
+      if (value === '100') {
+        setSelectedValue(151);
+      }
+
+      if (value === '135') {
+        setSelectedValue(251);
+      }
+
+      if (value === '107') {
+        setSelectedValue(386);
+      }
+
+      if (value === '155') {
+        setSelectedValue(494);
+      }
+
+      if (value === '72') {
+        setSelectedValue(649);
+      }
+
+      if (value === '88') {
+        setSelectedValue(721);
+      }
+
+      if (value === '96') {
+        setSelectedValue(809);
+      }
+
+      if (value === '112') {
+        setSelectedValue(905);
+      }
+
+    //   if (value === '283') {
+    //     setSelectedValue(1017);
+    //   }
     };
 
+    
+    const { pokemonList, loading } = UseFetch(`https://pokeapi.co/api/v2/pokemon?limit=${inputValue}&offset=${selectedValue}}`);
+    const { TypeList, loadingType } = UseFetch(`https://pokeapi.co/api/v2/type`);
+
+    const obtenerMasPokemones = async () => {
+        if (cargando) return; // Evitar solicitudes simultáneas
+        setCargando(true);
+        const respuesta = await fetch(
+            `https://pokeapi.co/api/v2/pokemon?limit=${elementosPorPagina}&offset=${(pagina - 1) * elementosPorPagina}`
+        );
+        const datos = await respuesta.json();
+        // Procesar los datos y agregarlos a la lista existente de Pokémon
+        setPagina(pagina + 1);
+        setCargando(false);
+    };
     // Usa IntersectionObserver para detectar cuando el usuario se acerca al final de la página
     useEffect(() => {
-    const opciones = {
-        root: null,
-        rootMargin: '0px',
-        threshold: 1.0, // Cuando el elemento está completamente en el área visible
-    };
+        const opciones = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 1.0, // Cuando el elemento está completamente en el área visible
+        };
+
     const observador = new IntersectionObserver((entradas) => {
         if (entradas[0].isIntersecting) {
         obtenerMasPokemones();
@@ -90,23 +138,23 @@ function CardPokemon() {
         return filteredPokemonList.slice(startIndex, endIndex);
     };
 
-const filterPokemonList = () => {
-    if (pokemonList) { // Verifica si pokemonList no es null o undefined
-        const filteredList = pokemonList.filter((pokemon) => {
-            const type1 = selectedValue1;
-            const type2 = selectedValue2;
-            if (type1 === '' && type2 === '') {
-                return true;
-            }
-            return (
-                (type1 === '' || pokemon.types.some((type) => type.type.name === type1)) &&
-                (type2 === '' || pokemon.types.some((type) => type.type.name === type2))
-            );
-        });
-        setFilteredPokemonList(filteredList);
-        setCurrentPage(1); // Restablece la página a la primera cuando se aplican filtros.
-    }
-};
+    const filterPokemonList = () => {
+        if (pokemonList) { // Verifica si pokemonList no es null o undefined
+            const filteredList = pokemonList.filter((pokemon) => {
+                const type1 = selectedValue1;
+                const type2 = selectedValue2;
+                if (type1 === '' && type2 === '') {
+                    return true;
+                }
+                return (
+                    (type1 === '' || pokemon.types.some((type) => type.type.name === type1)) &&
+                    (type2 === '' || pokemon.types.some((type) => type.type.name === type2))
+                );
+            });
+            setFilteredPokemonList(filteredList);
+            setCurrentPage(1); // Restablece la página a la primera cuando se aplican filtros.
+        }
+    };
 
     const totalPages = Math.ceil(filteredPokemonList.length / pokemonPerPage);
     const pages = Array.from({ length: totalPages }, (_, index) => index + 1)
@@ -114,7 +162,7 @@ const filterPokemonList = () => {
     
     return ( 
         <div>
-            {loading&&  loadingType ? (
+            {loading &&  loadingType ? (
             // Si loading es true, muestra un pre-cargador o una animación de carga
             <div className="loading-indicator">Cargando...</div>
             ) : (
@@ -123,6 +171,24 @@ const filterPokemonList = () => {
 
             <div className='container'>
                 <div className='row'>
+                    <div className='col-12 col-sm-6'>
+                    <select className='form-control' value={selectedValue} onChange={handleSelectChange}>
+                        <option value="">Seleccione una generación</option>
+                        <option value="151">Primera Generación</option>
+                        <option value="100">generacion II</option>
+                        <option value="135">generacion III</option>
+                        <option value="107">generacion IV</option>
+                        <option value="155">generacion V</option>
+                        <option value="72">generacion VI</option>
+                        <option value="88">generacion VII</option>
+                        <option value="96">generacion VIII</option>
+                        <option value="112">generacion IX</option>
+                        {/* <option value="283">Extras</option> */}
+                        {/* Otras opciones de generación si es necesario */}
+                    </select>
+                    <br />
+                    <input hidden type="text" value={inputValue} readOnly />
+                    </div>
                     <div className='col-12 col-sm-6'>
                     <div class="accordion" id="accordionExample">
                         <div class="accordion-item">

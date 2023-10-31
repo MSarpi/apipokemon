@@ -3,7 +3,7 @@ import React from 'react';
 function Pagination({ currentPage, totalPages, setCurrentPage }) {
     const isFirstPage = currentPage === 1;
     const isLastPage = currentPage === totalPages;
-    const maxDisplayedPages = 5; // Número máximo de páginas que se mostrarán.
+    const maxDisplayedPages = 3; // Número máximo de páginas que se mostrarán.
   
     const handlePageChange = (newPage) => {
       if (newPage >= 1 && newPage <= totalPages) {
