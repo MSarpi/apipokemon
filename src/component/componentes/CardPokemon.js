@@ -19,6 +19,7 @@ import pk_10273 from '../img/10273.png';
 import pk_10274 from '../img/10274.png';
 import pk_10275 from '../img/10275.png';
 import Pagination from './Pagination';
+ 
 
 
 
@@ -82,9 +83,9 @@ function CardPokemon() {
         setSelectedValue(905);
       }
 
-    //   if (value === '283') {
-    //     setSelectedValue(1017);
-    //   }
+      if (value === '283') {
+        setSelectedValue(1017);
+      }
     };
 
     
@@ -172,20 +173,46 @@ function CardPokemon() {
             <div className='container'>
                 <div className='row'>
                     <div className='col-12 col-sm-6'>
-                    <select className='form-control' value={selectedValue} onChange={handleSelectChange}>
-                        <option value="">Seleccione una generación</option>
-                        <option value="151">Primera Generación</option>
-                        <option value="100">generacion II</option>
-                        <option value="135">generacion III</option>
-                        <option value="107">generacion IV</option>
-                        <option value="155">generacion V</option>
-                        <option value="72">generacion VI</option>
-                        <option value="88">generacion VII</option>
-                        <option value="96">generacion VIII</option>
-                        <option value="112">generacion IX</option>
-                        {/* <option value="283">Extras</option> */}
-                        {/* Otras opciones de generación si es necesario */}
-                    </select>
+                    <div class="accordion" id="accordionExample">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingTwo">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+                                <h5>Filtro por Generación</h5>
+                            </button>
+                            </h2>
+                            <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+                                <div class="accordion-body">
+                                    <div className='row '>
+                                        <div className='col-sm-12 ' style={{marginBottom: "20px"}}> 
+                                        <h5>Seleccione una Generación</h5>   
+                                        <select className='form-control' onChange={handleSelectChange}>
+                                            <option value={selectedValue} disabled>Seleccione una generación</option>
+                                            <option value="151">Generación I</option>
+                                            <option value="100">generacion II</option>
+                                            <option value="135">generacion III</option>
+                                            <option value="107">generacion IV</option>
+                                            <option value="155">generacion V</option>
+                                            <option value="72">generacion VI</option>
+                                            <option value="88">generacion VII</option>
+                                            <option value="96">generacion VIII</option>
+                                            <option value="112">generacion IX</option>
+                                            {/* <option value="283">Extras</option> */}
+                                            {/* Otras opciones de generación si es necesario */}
+                                        </select>
+                                        </div>
+                                    </div>
+                                    <div className='row'>
+                                        <div className='col-3' > </div>
+                                        <div className='col-9 ' >  
+                                        <button className="btn btn-danger" id='btn_accion' type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo" onClick={() => { setSelectedValue(0); setInputValue(151); }}>
+                                            Limpiar
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                     <br />
                     <input hidden type="text" value={inputValue} readOnly />
                     </div>
@@ -213,23 +240,22 @@ function CardPokemon() {
                                         <div className='col-sm-6 ' > 
                                             <h5>Seleccione un tipo (opcional)</h5>    
                                             <select className="form-control" onChange={(e) => setSelectedValue2(e.target.value)}>
-                                                <option value={"1"}>Ejemplo: Fire</option>
+                                                <option value={"1"} disabled>Ejemplo: Fire</option>
                                                 {TypeList.map((type) => (
                                                 <option value={type.name} key={type.name}>{type.name}</option>
                                                 ))}
                                             </select>
                                         </div>
                                     </div>
-                                    <br/>
                                     <div className='row'>
-                                        <div className='col-3' >  
-                                        <button className="btn btn-danger" onClick={() => { setSelectedValue1(''); setSelectedValue2(''); }}>
-                                            Limpiar
-                                            </button>
+                                        <div className='col-9' >  
+
                                         </div>
-                                        <div className='col-9 ' >  
+                                        <div className='col-3 ' >  
                                             <div className="d-grid gap-2">
-                                                <bottom className="btn btn-primary">Buscar</bottom>
+                                                <button className="btn btn-danger" id="headingOne" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne" onClick={() => { setSelectedValue1(''); setSelectedValue2(''); }}>
+                                                    Limpiar
+                                                </button>
                                             </div> 
                                         </div>
                                     </div>
@@ -240,7 +266,7 @@ function CardPokemon() {
                     </div>
                 </div>
             </div>
-            <br/>
+
             <div className='container'>
                 <div className='row card-pokemon-border-mood' ref={tuRef}>
                     {visiblePokemon
@@ -302,11 +328,11 @@ function CardPokemon() {
                                         </div>
                                     )
                                 }
-                                <div className="card-body card-body-mood">
+                                {/* <div className="card-body card-body-mood">
                                     <div className='d-grid gap-2'>
                                         <button className='btn btn-primary btn-lg' onClick={() =>  setTimeout(() => {toast.error('Función aun no disponible');})}><Toaster />Ver mas</button>
                                     </div>
-                                </div>
+                                </div> */}
                             </div>
                             
                             ):(
@@ -372,11 +398,11 @@ function CardPokemon() {
                                     )
                                 }
 
-                                <div className="card-body card-body-mood">
+                                {/* <div className="card-body card-body-mood">
                                     <div className='d-grid gap-2'>
                                         <button className='btn btn-primary btn-lg' onClick={() =>  setTimeout(() => {toast.error('Función aun no disponible');})}><Toaster />Ver mas</button>
                                     </div>
-                                </div>
+                                </div> */}
                             </div>
                             )}
                         </div>

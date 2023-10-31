@@ -8,6 +8,7 @@ import '../src/component/css/buscador.css';
 import '../src/component/css/cardpokemon.css';
 import '../src/component/css/modal_resultado_buscador.css';
 
+
 function App() {
   return (
     
