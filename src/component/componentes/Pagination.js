@@ -51,52 +51,52 @@ function Pagination({ currentPage, totalPages, setCurrentPage }) {
         <ul className="pagination justify-content-center">
                                   {/* Botón para ir a la primera página */}
           <li className={`page-item ${isFirstPage ? 'disabled' : ''}`}>
-            <button
+            <a href='#img_pkx'
               className="page-link"
               onClick={() => handlePageChange(1)}
               disabled={isFirstPage}
             >
               1...
-            </button>
+            </a>
           </li>
             <li className={`page-item ${isFirstPage ? 'disabled' : ''}`}>
-            <button
+            <a href='#img_pkx'
                 className="page-link"
                 onClick={() => handlePageChange(currentPage - 1)}
                 disabled={isFirstPage}
             >
                 Anterior
-            </button>
+            </a>
             </li>
             {generatePageNumbers().map((page) => (
             <li
                 key={page}
                 className={`page-item ${currentPage === page ? 'active' : ''}`}
             >
-                <button className="page-link" onClick={() => handlePageChange(page)}>
+                <a href='#img_pkx' className="page-link" onClick={() => handlePageChange(page)}>
                 {page}
-                </button>
+                </a>
             </li>
             ))}
             <li className={`page-item ${isLastPage} ? 'disabled' : '' `}>
-            <button
+            <a href='#img_pkx'
                 className="page-link"
                 onClick={() => handlePageChange(currentPage + 1)}
                 disabled={isLastPage}
             >
                 Siguiente
-            </button>
+            </a>
             </li>
 
           {/* Botón para ir a la última página */}
           <li className={`page-item ${isLastPage ? 'disabled' : ''}`}>
-            <button
+            <a href='#img_pkx'
               className="page-link"
               onClick={() => handlePageChange(totalPages)}
               disabled={isLastPage}
             >
               ...{totalPages}
-            </button>
+            </a>
           </li>
         </ul>
         </nav>

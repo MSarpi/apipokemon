@@ -171,7 +171,7 @@ function CardPokemon() {
             // Si loading es false, muestra el contenido una vez que la solicitud esté completa
             <div>
 
-            <div className='container' style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+            <div id='img_pkx' className='container' style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
                 <img className='pokedex_img' src={pokedex} alt="Pokedex" />
             </div>
             <div className='container mood_filter'>
@@ -238,7 +238,7 @@ function CardPokemon() {
                                         <div className='col-sm-6 ' style={{marginBottom: "20px"}}> 
                                             <h5>Seleccione un tipo</h5>  
                                             <select className="form-control" onChange={(e) => setSelectedValue1(e.target.value)}>
-                                                <option value={"1"} disabled>Ejemplo: Fire</option>
+                                                <option value={"1"} selected disabled>Ejemplo: Fire</option>
                                                 {TypeList.map((type) => (
                                                 <option value={type.name} key={type.name}>{type.name}</option>
                                                 ))}
@@ -248,7 +248,7 @@ function CardPokemon() {
                                         <div className='col-sm-6 ' > 
                                             <h5>Seleccione un tipo (opcional)</h5>    
                                             <select className="form-control" onChange={(e) => setSelectedValue2(e.target.value)}>
-                                                <option value={"1"} disabled>Ejemplo: Fire</option>
+                                                <option value={"1"}selected disabled>Ejemplo: Fire</option>
                                                 {TypeList.map((type) => (
                                                 <option value={type.name} key={type.name}>{type.name}</option>
                                                 ))}
@@ -343,12 +343,29 @@ function CardPokemon() {
                                         </div>
                                     )
                                 }
-                                {/* <div className="card-body card-body-mood">
-                                    <div className='d-grid gap-2'>
-                                        <button className='btn btn-primary btn-lg' onClick={() =>  setTimeout(() => {toast.error('Función aun no disponible');})}><Toaster />Ver mas</button>
+
+                                <div className='row'>
+                                    <div className='col-3'>
+                                    
                                     </div>
-                                </div> */}
-                            </div>
+                                    <div className='col-6'>
+                                    <div class="btn-group d-flex justify-content-center" role="group" aria-label="Tipos de Pokémon">
+                                    <button class={`btn background-${pokemon.types[0].type.name} no-hover`}>
+                                        {pokemon.types[0].type.name}
+                                    </button>
+                                    {pokemon.types.length > 1 ? 
+                                        <button class={`btn background-${pokemon.types[1].type.name} no-hover`}>
+                                        {pokemon.types[1].type.name}
+                                        </button>
+                                        : ''}
+                                    </div>
+                                    </div>
+                                    <div className='col-3'>
+                                    
+                                    </div>
+                                </div>
+
+                                </div>
                             
                             ):(
                             <div className="card card_mood card-pokemon-border">
@@ -380,7 +397,10 @@ function CardPokemon() {
                                     </div>
                                 </div>
                                 {
+                                                                
+                                 
                                 pokemon.name.endsWith('sinistcha') ? (
+                                    
                                     <img className="card-img-top img_pokemon" src={pk_1013} alt={pokemon.name} />
                                     ) : pokemon.name.endsWith('mimikyu-busted') ? (
                                         <img className="card-img-top img_pokemon" src={pk_10143} alt={pokemon.name} />
@@ -412,12 +432,26 @@ function CardPokemon() {
                                         <div/>
                                     )
                                 }
-
-                                {/* <div className="card-body card-body-mood">
-                                    <div className='d-grid gap-2'>
-                                        <button className='btn btn-primary btn-lg' onClick={() =>  setTimeout(() => {toast.error('Función aun no disponible');})}><Toaster />Ver mas</button>
+                                                                <div className='row'>
+                                    <div className='col-3'>
+                                    
                                     </div>
-                                </div> */}
+                                    <div className='col-6'>
+                                    <div class="btn-group d-flex justify-content-center" role="group" aria-label="Tipos de Pokémon">
+                                    <button class={`btn background-${pokemon.types[0].type.name} no-hover`}>
+                                        {pokemon.types[0].type.name}
+                                    </button>
+                                    {pokemon.types.length > 1 ? 
+                                        <button class={`btn background-${pokemon.types[1].type.name} no-hover`}>
+                                        {pokemon.types[1].type.name}
+                                        </button>
+                                        : ''}
+                                    </div>
+                                    </div>
+                                    <div className='col-3'>
+                                    
+                                    </div>
+                                </div>
                             </div>
                             )}
 
@@ -427,18 +461,17 @@ function CardPokemon() {
                 </div>
                 
             </div>
-
-                <div className='row'>
-                    <div className='col-sm-4'></div>
-                        <div className='col-sm-4'>
+            <div className='row'>
+                <div className='col-sm-4'></div>
+                    <div className='col-sm-4'>
                         <Pagination
-            currentPage={currentPage}
-            totalPages={totalPages}
-            setCurrentPage={setCurrentPage}
-          />          
-                        </div>
-                        <div className='col-sm-4'></div>
+                            currentPage={currentPage}
+                            totalPages={totalPages}
+                            setCurrentPage={setCurrentPage}
+                        />          
                     </div>
+                <div className='col-sm-4'></div>
+            </div>
         </div>      
     )}
 </div>);}
