@@ -30,6 +30,19 @@
     background-color: white;
 }
 
+.pk_miniatura{
+    position:absolute;
+    margin-left: 5rem !important;
+    margin-top: -2rem !important;
+    transition: all 300ms ease;
+}
+
+.id_number_pk{
+    position:absolute;
+    margin-right: 5rem !important;
+    margin-top: .2rem !important;
+    transition: all 300ms ease;
+}
 
 
 @media (max-width: 900px) {
@@ -37,6 +50,11 @@
 
         height: 34rem;
     }
+
+    .pokedex_img{
+        width: 100%;
+    }
+    
 }
 .card-body{
     margin-top: .5rem;
@@ -67,6 +85,9 @@
     background-position: center; /* Centra la imagen de fondo en el contenedor */
 }
 
+.mood_filter{
+    margin-bottom: 1rem;
+}
 .enumeracion_card{
     text-align: right;
 

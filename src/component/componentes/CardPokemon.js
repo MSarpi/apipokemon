@@ -18,6 +18,7 @@ import pk_10272 from '../img/10272.png';
 import pk_10273 from '../img/10273.png';
 import pk_10274 from '../img/10274.png';
 import pk_10275 from '../img/10275.png';
+import pokedex from '../img/pokedex.png';
 import Pagination from './Pagination';
  
 
@@ -40,8 +41,8 @@ function CardPokemon() {
     const [currentPage, setCurrentPage] = useState(1);
     const [filteredPokemonList, setFilteredPokemonList] = useState([]);
 
-    const [selectedValue, setSelectedValue] = useState('');
-    const [inputValue, setInputValue] = useState(0);
+    const [selectedValue, setSelectedValue] = useState('0');
+    const [inputValue, setInputValue] = useState(150);
   
     const handleSelectChange = (event) => {
       const value = event.target.value;
@@ -170,7 +171,10 @@ function CardPokemon() {
             // Si loading es false, muestra el contenido una vez que la solicitud esté completa
             <div>
 
-            <div className='container'>
+            <div className='container' style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+                <img className='pokedex_img' src={pokedex} alt="Pokedex" />
+            </div>
+            <div className='container mood_filter'>
                 <div className='row'>
                     <div className='col-12 col-sm-6'>
                     <div class="accordion" id="accordionExample">
@@ -185,8 +189,8 @@ function CardPokemon() {
                                     <div className='row '>
                                         <div className='col-sm-12 ' style={{marginBottom: "20px"}}> 
                                         <h5>Seleccione una Generación</h5>   
-                                        <select className='form-control' onChange={handleSelectChange}>
-                                            <option value={selectedValue} disabled>Seleccione una generación</option>
+                                        <select className='form-control'  onChange={handleSelectChange}>
+                                            <option value={selectedValue} selected disabled>Seleccione una generación</option>
                                             <option value="151">Generación I</option>
                                             <option value="100">generacion II</option>
                                             <option value="135">generacion III</option>
@@ -202,11 +206,15 @@ function CardPokemon() {
                                         </div>
                                     </div>
                                     <div className='row'>
-                                        <div className='col-3' > </div>
-                                        <div className='col-9 ' >  
-                                        <button className="btn btn-danger" id='btn_accion' type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo" onClick={() => { setSelectedValue(0); setInputValue(151); }}>
+                                        <div className='col-9'> </div>
+                                        <div className='col-3' >  
+                                        <div className="d-grid gap-2">
+                                        <button className="btn btn-danger" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo" onClick={() => { setSelectedValue(0); setInputValue(151); }}>
                                             Limpiar
                                             </button>
+                                        </div>
+
+
                                         </div>
                                     </div>
                                 </div>
@@ -271,14 +279,21 @@ function CardPokemon() {
                 <div className='row card-pokemon-border-mood' ref={tuRef}>
                     {visiblePokemon
                     .map((pokemon, index) => (
-                        <div className='col-md-4 ' key={index}>
+                        <div className=' col-12 col-md-6 col-lg-4' key={index}>
                             {pokemon.sprites.other['official-artwork'].front_default ? (
+
                             <div className="card-pokemon-border">
+
                                 <div className="card-body card-body-titulo">
+
                                     <div className='row'>
                                         <div style={{textAlign: "center"}} className='col-12'>
+                                            
                                         <input type="number" hidden className="nombre_pokemon" defaultValue={pokemon.id}/>
+                                        <h5 class="id_number_pk">#{pokemon.id}</h5>
+                                        <a class="pk_miniatura"> <img src={pokemon.sprites.front_default}/></a>
                                             <strong>
+                                            
                                                 <p  className="card-title card-name-pokemon">
                                                     {pokemon.name
                                                         .split('-') // Dividir la cadena en un array en cada "-"
@@ -405,6 +420,7 @@ function CardPokemon() {
                                 </div> */}
                             </div>
                             )}
+
                         </div>
                         
                     ))}
