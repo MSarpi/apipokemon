@@ -29,7 +29,7 @@ const Modal = ({pokemon, closeModal}) => {
   
   return (
     <div className="modal fade show modal_moood" style={{ display: 'block' }} tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
-      <div className="modal-dialog modal-dialog-centered modal-lg modal-dialog-scrollable" role="document">
+      <div className="modal-dialog modal-lg modal-dialog-scrollable" role="document">
         <div className="modal-content">
           <div className="modal-header header-mood-buscador">
             <h5 className="modal-title">{pokemon.name}</h5>
