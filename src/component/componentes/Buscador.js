@@ -18,7 +18,7 @@ class Buscador extends Component {
     // Inicializa el select2 en el componente componentDidMount
     $('#searchInput').select2();
     // Obtiene la lista de todos los Pokémon y la almacena en el estado
-    fetch('https://pokeapi.co/api/v2/pokemon?limit=100000&offset=0')
+    fetch('https://pokeapi.co/api/v2/pokemon?limit=1300&offset=0')
       .then((response) => response.json())
       .then((data) => {
         // console.log(data)

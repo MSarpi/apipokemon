@@ -17,13 +17,24 @@ function App() {
         <div className="logo_pokemon">
           <div className='row'>
             <div className='col-3'>
+            <div className="overlay_4">
+              </div>
+            <div className="overlay_7">
+              </div>
+              <div className="overlay_150">
+              </div>
             </div> 
             <div className='col-6'>
               <div className="overlay">
               </div>
             </div>
             <div className='col-3'>
-
+            <div className="overlay_1">
+              </div>
+              <div className="overlay_25">
+              </div>
+              <div className="overlay_151">
+              </div>
             </div> 
           </div>
         </div>

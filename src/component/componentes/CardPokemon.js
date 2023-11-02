@@ -53,8 +53,8 @@ function CardPokemon() {
 
     const pokemonPerPage = 9; // Cantidad de Pokémon por página
 
-    const [page, setPage] = useState(1);
-    const resultsPerPage = 100000; // Cambia esto al número deseado de resultados por página
+    // const [page, setPage] = useState(1);
+    // const resultsPerPage = 100000; // Cambia esto al número deseado de resultados por página
     
     const [currentPage, setCurrentPage] = useState(1);
     const [filteredPokemonList, setFilteredPokemonList] = useState([]);
@@ -64,7 +64,7 @@ function CardPokemon() {
 
     const [GetValue, setGetValueValue] = useState('Generation I');
 
-    const [showLoading, setShowLoading] = useState(false);
+    // const [showLoading, setShowLoading] = useState(false);
     
     const handleSelectChange = (event) => {
 
@@ -207,10 +207,13 @@ function CardPokemon() {
             ) : (
             // Si loading es false, muestra el contenido una vez que la solicitud esté completa
             <div>
-
-            <div className="d-flex justify-content-center align-items-center">
-                <img src={pokedex}></img>
+                
+            <div className="container ">
+                <div className="d-flex justify-content-center align-items-center ">
+                    <img className='img_pokedex' src={pokedex}></img>
+                </div>
             </div>
+
 
             <div className="d-flex justify-content-center align-items-center">
                 <strong><p className='generacion_name' onChange={(e) => setGetValueValue(e.target.value)}>{GetValue}</p></strong>
@@ -417,15 +420,13 @@ function CardPokemon() {
                                         <button
                                             className="btn btn-warning w-100 btn-statistics"  // Agrega la clase w-100 para ocupar todo el ancho disponible
                                             onClick={() => openModal(pokemon)}
-                                            data-toggle="modal"
-                                            data-target={`#id${pokemon.id}`}
                                         >
                                             View Statistics
                                         </button>
                                         </div>
                                     
                                     {/* Renderiza el modal */}
-                                    <ModalPokemon id={`id${pokemon.id}`} show={isModalVisible} pokemon={selectedPokemon} DescriptionList={DescriptionList} closeModal={closeModal} />
+                                    <ModalPokemon pokemon={selectedPokemon} closeModal={closeModal} />
                                     </div>
                                 </div>
                                 </div>

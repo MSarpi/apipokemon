@@ -24,23 +24,23 @@ import pk_10273 from '../img/10273.png';
 import pk_10274 from '../img/10274.png';
 import pk_10275 from '../img/10275.png';
 
-const Modal = ({pokemon, show, closeModal, id }) => {
-  if (!show || !pokemon || !id) return null;
+const Modal = ({pokemon, closeModal}) => {
+  if (!pokemon) return null;
   
   return (
-    <div className="modal fade show modal_moood" style={{ display: 'block' }} id={id} tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
+    <div className="modal fade show modal_moood" style={{ display: 'block' }} tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
       <div className="modal-dialog modal-dialog-centered modal-lg modal-dialog-scrollable" role="document">
         <div className="modal-content">
           <div className="modal-header header-mood-buscador">
             <h5 className="modal-title">{pokemon.name}</h5>
           </div>
           <div className="modal-body">
-                        <div className='row '> 
-                <div className='col-sm-6'>
+            <div className='row '> 
+                <div className='col-sm-6 padding'>
                   
                   {pokemon.sprites.other['official-artwork'].front_shiny ? (
 
-                    <div id="carouselExampleDark" className="carousel carousel-dark slide " data-bs-ride="carousel">
+                    <div id="carousel" className="carousel carousel-dark slide " data-bs-ride="carousel">
                       
                     <div className="carousel-inner ">
                       <div className="carousel-item active" data-bs-interval="2000">
@@ -56,11 +56,11 @@ const Modal = ({pokemon, show, closeModal, id }) => {
                         </div>
                       </div>
                     </div>
-                    <button className="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="prev">
+                    <button className="carousel-control-prev" type="button" data-bs-target="#carousel" data-bs-slide="prev">
                       <span className="carousel-control-prev-icon" aria-hidden="true"></span>
                       <span className="visually-hidden">Previous</span>
                     </button>
-                    <button className="carousel-control-next" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="next">
+                    <button className="carousel-control-next" type="button" data-bs-target="#carousel" data-bs-slide="next">
                       <span className="carousel-control-next-icon" aria-hidden="true"></span>
                       <span className="visually-hidden">Next</span>
                     </button>
