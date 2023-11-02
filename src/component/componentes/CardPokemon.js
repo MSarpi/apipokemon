@@ -1,5 +1,8 @@
 import React, { useState, useEffect, useRef  } from 'react';
+import ModalPokemon from './ModalPokemon';
 import { UseFetch } from '../api_conexion/UseFetch';
+
+
 import toast, { Toaster } from 'react-hot-toast';
 import 'select2';
 import $ from 'jquery';
@@ -20,11 +23,26 @@ import pk_10274 from '../img/10274.png';
 import pk_10275 from '../img/10275.png';
 import pokedex from '../img/pokedex.png';
 import Pagination from './Pagination';
+import Loader from "../componentes/loading";
  
 
 
 
 function CardPokemon() {
+    const [isModalVisible, setModalVisible] = useState(false);
+    const [selectedPokemon, setSelectedPokemon] = useState(null);
+  
+    const openModal = (pokemon) => {
+      setSelectedPokemon(pokemon);
+      setModalVisible(true);
+    };
+  
+    const closeModal = () => {
+      setSelectedPokemon(null);
+      setModalVisible(false);
+    };
+
+
     const tuRef = useRef(); 
     const [pagina, setPagina] = useState(1);
     const elementosPorPagina = 20; 
@@ -46,7 +64,10 @@ function CardPokemon() {
 
     const [GetValue, setGetValueValue] = useState('Generation I');
 
+    const [showLoading, setShowLoading] = useState(false);
+    
     const handleSelectChange = (event) => {
+
       const value = event.target.value;
       setInputValue(value);
       setGetValueValue(value);
@@ -108,8 +129,6 @@ function CardPokemon() {
     const { pokemonList, loading } = UseFetch(`https://pokeapi.co/api/v2/pokemon?limit=${inputValue}&offset=${selectedValue}`);
     const { TypeList, loadingType } = UseFetch(`https://pokeapi.co/api/v2/type`);
     const { DescriptionList, loadingDescription } = UseFetch(`https://pokeapi.co/api/v2/pokemon-species?limit=${inputValue}&offset=${selectedValue}}`);
-    console.log(DescriptionList)
-
 
     const obtenerMasPokemones = async () => {
         if (cargando) return; // Evitar solicitudes simultáneas
@@ -189,23 +208,32 @@ function CardPokemon() {
             // Si loading es false, muestra el contenido una vez que la solicitud esté completa
             <div>
 
+            <div className="d-flex justify-content-center align-items-center">
+                <img src={pokedex}></img>
+            </div>
+
+            <div className="d-flex justify-content-center align-items-center">
+                <strong><p className='generacion_name' onChange={(e) => setGetValueValue(e.target.value)}>{GetValue}</p></strong>
+            </div>
+
+
             <div className='container mood_filter'>
                 <div className='row'>
                     <div className='col-12 col-sm-6'>
-                    <div class="accordion" id="accordionExample">
-                        <div class="accordion-item">
-                            <h2 class="accordion-header" id="headingTwo">
-                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+                    <div className="accordion" id="accordionExample">
+                        <div className="accordion-item">
+                            <h2 className="accordion-header" id="headingTwo">
+                            <button className="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
                                 <h5>Filter by generation</h5>
                             </button>
                             </h2>
-                            <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
-                                <div class="accordion-body">
+                            <div id="collapseTwo" className="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+                                <div className="accordion-body">
                                     <div className='row '>
                                         <div className='col-sm-12 ' style={{marginBottom: "20px"}}> 
-                                        <h5>Filter by generation</h5>   
+                                        <h5>Select a generation.</h5>   
                                         <select className='form-control'  onChange={handleSelectChange}>
-                                            <option value={selectedValue} selected disabled>Filter by generation</option>
+                                            <option value={selectedValue} selected disabled>Ej: Generacion III</option>
                                             <option value="151">Generación I</option>
                                             <option value="100">generacion II</option>
                                             <option value="135">generacion III</option>
@@ -240,15 +268,15 @@ function CardPokemon() {
                     <input hidden type="text" value={inputValue} readOnly />
                     </div>
                     <div className='col-12 col-sm-6'>
-                    <div class="accordion" id="accordionExample">
-                        <div class="accordion-item">
-                            <h2 class="accordion-header" id="headingOne">
-                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                    <div className="accordion" id="accordionExample">
+                        <div className="accordion-item">
+                            <h2 className="accordion-header" id="headingOne">
+                            <button className="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
                                 <h5>Filter by type</h5>
                             </button>
                             </h2>
-                            <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
-                                <div class="accordion-body">
+                            <div id="collapseOne" className="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                                <div className="accordion-body">
                                     <div className='row '>
                                         <div className='col-sm-6 ' style={{marginBottom: "20px"}}> 
                                             <h5>Seleccione un tipo</h5>  
@@ -289,9 +317,6 @@ function CardPokemon() {
                     </div>
                 </div>
             </div>
-            <div class="d-flex justify-content-center align-items-center">
-                <strong><p className='generacion_name' onChange={(e) => setGetValueValue(e.target.value)}>{GetValue}</p></strong>
-                </div>
             <div className='container'>
                 <div className='row card-pokemon-border-mood' ref={tuRef}>
                     {visiblePokemon
@@ -299,7 +324,7 @@ function CardPokemon() {
                         <div className=' col-12 col-md-6 col-lg-4' key={index}>
                             {pokemon.sprites.other['official-artwork'].front_default ? (
 
-                            <div className="card-pokemon-border">
+                            <div className="card-pokemon-border"  >
 
                                 <div className="card-body card-body-titulo">
 
@@ -307,8 +332,8 @@ function CardPokemon() {
                                         <div style={{textAlign: "center"}} className='col-12'>
                                             
                                         <input type="number" hidden readOnly value={pokemon.id}/>
-                                        <h5 class="id_number_pk">#{pokemon.id}</h5>
-                                        <a class="pk_miniatura"> <img src={pokemon.sprites.front_default}/></a>
+                                        <h5 className="id_number_pk">#{pokemon.id}</h5>
+                                        <a className="pk_miniatura"> <img src={pokemon.sprites.front_default}/></a>
                                             <strong>
                                             
                                                 <p  className="card-title card-name-pokemon">
@@ -365,12 +390,12 @@ function CardPokemon() {
                                     
                                     </div>
                                     <div className='col-6'>
-                                    <div class="btn-group d-flex justify-content-center" role="group" aria-label="Tipos de Pokémon">
-                                    <button class={`btn background-${pokemon.types[0].type.name} no-hover`}>
+                                    <div className="btn-group d-flex justify-content-center" role="group" aria-label="Tipos de Pokémon">
+                                    <button className={`btn background-${pokemon.types[0].type.name} no-hover`}>
                                         {pokemon.types[0].type.name}
                                     </button>
                                     {pokemon.types.length > 1 ? 
-                                        <button class={`btn background-${pokemon.types[1].type.name} no-hover`}>
+                                        <button className={`btn background-${pokemon.types[1].type.name} no-hover`}>
                                         {pokemon.types[1].type.name}
                                         </button>
                                         : ''}
@@ -380,13 +405,29 @@ function CardPokemon() {
                                     
                                     </div>
                                 </div>
-                                {/* <div className='type-description'>
-                                <p className="description-text">
+                                <div className='type-description'>
+                                {/* <p className="description-text">
                                     {DescriptionList && DescriptionList[index] && DescriptionList[index].flavor_text_entries && (
                                         <p>{DescriptionList[index].flavor_text_entries[1].flavor_text}</p>
                                     )}
-                                    </p>
-                                </div> */}
+                                    </p> */}
+                                    <div>
+                                    {/* Botón para abrir el modal */}
+                                    <div className="text-center">
+                                        <button
+                                            className="btn btn-warning w-100 btn-statistics"  // Agrega la clase w-100 para ocupar todo el ancho disponible
+                                            onClick={() => openModal(pokemon)}
+                                            data-toggle="modal"
+                                            data-target={`#id${pokemon.id}`}
+                                        >
+                                            View Statistics
+                                        </button>
+                                        </div>
+                                    
+                                    {/* Renderiza el modal */}
+                                    <ModalPokemon id={`id${pokemon.id}`} show={isModalVisible} pokemon={selectedPokemon} DescriptionList={DescriptionList} closeModal={closeModal} />
+                                    </div>
+                                </div>
                                 </div>
 
                             
@@ -460,12 +501,12 @@ function CardPokemon() {
                                     
                                     </div>
                                     <div className='col-6'>
-                                    <div class="btn-group d-flex justify-content-center" role="group" aria-label="Tipos de Pokémon">
-                                    <button class={`btn background-${pokemon.types[0].type.name} no-hover`}>
+                                    <div className="btn-group d-flex justify-content-center" role="group" aria-label="Tipos de Pokémon">
+                                    <button className={`btn background-${pokemon.types[0].type.name} no-hover`}>
                                         {pokemon.types[0].type.name}
                                     </button>
                                     {pokemon.types.length > 1 ? 
-                                        <button class={`btn background-${pokemon.types[1].type.name} no-hover`}>
+                                        <button className={`btn background-${pokemon.types[1].type.name} no-hover`}>
                                         {pokemon.types[1].type.name}
                                         </button>
                                         : ''}
@@ -475,9 +516,11 @@ function CardPokemon() {
                                     
                                     </div>
                                 </div>
+
+
                             </div>
                             )}
-
+                      
                         </div>
                         
                     ))}
