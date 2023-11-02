@@ -380,13 +380,13 @@ function CardPokemon() {
                                     
                                     </div>
                                 </div>
-                                <div className='type-description'>
+                                {/* <div className='type-description'>
                                 <p className="description-text">
                                     {DescriptionList && DescriptionList[index] && DescriptionList[index].flavor_text_entries && (
                                         <p>{DescriptionList[index].flavor_text_entries[1].flavor_text}</p>
                                     )}
                                     </p>
-                                </div>
+                                </div> */}
                                 </div>
 
                             
