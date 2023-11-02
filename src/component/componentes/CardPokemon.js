@@ -44,7 +44,7 @@ function CardPokemon() {
     const [selectedValue, setSelectedValue] = useState('0');
     const [inputValue, setInputValue] = useState(151);
 
-    const [GetValue, setGetValueValue] = useState('Generacion I');
+    const [GetValue, setGetValueValue] = useState('Generation I');
 
     const handleSelectChange = (event) => {
       const value = event.target.value;
@@ -54,47 +54,47 @@ function CardPokemon() {
     {
         if (value === '151') {
             setSelectedValue(0);
-            setGetValueValue('Generacion I');
+            setGetValueValue('Generation I');
           }
     
           if (value === '100') {
             setSelectedValue(151);
-            setGetValueValue('Generacion II');
+            setGetValueValue('Generation II');
           }
     
           if (value === '135') {
             setSelectedValue(251);
-            setGetValueValue('Generacion III');
+            setGetValueValue('Generation III');
           }
     
           if (value === '107') {
             setSelectedValue(386);
-            setGetValueValue('Generacion IV');
+            setGetValueValue('Generation IV');
           }
     
           if (value === '155') {
             setSelectedValue(494);
-            setGetValueValue('Generacion V');
+            setGetValueValue('Generation V');
           }
     
           if (value === '72') {
             setSelectedValue(649);
-            setGetValueValue('Generacion VI');
+            setGetValueValue('Generation VI');
           }
     
           if (value === '88') {
             setSelectedValue(721);
-            setGetValueValue('Generacion VII');
+            setGetValueValue('Generation VII');
           }
     
           if (value === '96') {
             setSelectedValue(809);
-            setGetValueValue('Generacion VIII');
+            setGetValueValue('Generation VIII');
           }
     
           if (value === '112') {
             setSelectedValue(905);
-            setGetValueValue('Generacion IX');
+            setGetValueValue('Generation IX');
           }
     
           if (value === '283') {
