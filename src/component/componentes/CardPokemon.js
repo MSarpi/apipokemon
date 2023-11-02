@@ -42,7 +42,7 @@ function CardPokemon() {
     const [filteredPokemonList, setFilteredPokemonList] = useState([]);
 
     const [selectedValue, setSelectedValue] = useState('0');
-    const [inputValue, setInputValue] = useState(150);
+    const [inputValue, setInputValue] = useState(100000);
   
     const handleSelectChange = (event) => {
       const value = event.target.value;
