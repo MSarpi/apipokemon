@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 export function UseFetch(url) {
     const [pokemonList, setPokemonList] = useState([]);
     const [TypeList, setType] = useState([]);
+    const [DescriptionList, setDescription] = useState([]);
 
     useEffect(() => {
         // Function to obtain a list of Pokémon
@@ -49,23 +50,32 @@ export function UseFetch(url) {
             const pokemonTypeList = await Promise.all(promisesType);
             setType(pokemonTypeList);
         };
-        // // Function to obtain a list of Pokémon
-        // const getType = async (url) => {
-        //     const response = await fetch(url);
-        //     const data = await response.json();
-        //     return data;
-        // };
-        // const getTypeList = async () => {
-        //     const TiposPokemon = await getType(url);
-        //     const promises = TiposPokemon.results.map(types => getPokemonDetails(types.url));
-        //     const type = await Promise.all(promises);
-        //     setType(type)
-        // };
 
+        // Function to obtain a list of Pokémon
+        const getDescriptionList = async (url) => {
+            const response = await fetch(url);
+            const data = await response.json();
+            return data;
+        };
+
+        // Function to obtain the details of a Pokémon
+        const getDescriptionDetails = async (url) => {
+            const response = await fetch(url);
+            const data = await response.json();
+            return data;
+        };
+
+        const fetchDescriptionData = async () => {
+            const initialDescription = await getDescriptionList(url);
+            const promisesDescription = initialDescription.results.map(type => getDescriptionDetails(type.url));
+            const pokemonDescriptionList = await Promise.all(promisesDescription);
+            setDescription(pokemonDescriptionList);
+        };
 
         fetchPokemonData();
         fetchTypeData();
+        fetchDescriptionData();
     }, [url]); // Add 'url' as a dependency to re-fetch when the URL changes
 
-    return { pokemonList, TypeList }; // Return the fetched data
+    return { pokemonList, TypeList, DescriptionList }; // Return the fetched data
 }

@@ -105,7 +105,7 @@ const Modal = ({ pokemon, onClose }) => {
                 </div>
                 <div className='col-sm-6 '>
                   <div className='card-data-pokemon'>
-                    <h5 style={{ textAlign: 'center' }}>Datos Principales</h5>
+                    <h5 style={{ textAlign: 'center' }}>Main data</h5>
                     <hr/> 
                     <div className='row' style={{ marginBottom: '-20px'}}>
                       <div className='col-5'>
@@ -118,7 +118,7 @@ const Modal = ({ pokemon, onClose }) => {
                   
                     <div className='row' style={{ marginBottom: '-20px'}}>
                       <div className='col-5'>
-                      <strong><p style={{ textAlign: 'right'}}><strong>Peso: </strong></p></strong>
+                      <strong><p style={{ textAlign: 'right'}}><strong>Weight: </strong></p></strong>
                       </div>
                       <div className='col-7'>
                       <span>{(pokemon.weight / 10).toLocaleString()} kg</span>
@@ -127,7 +127,7 @@ const Modal = ({ pokemon, onClose }) => {
                   
                     <div className='row' style={{ marginBottom: '-20px'}}>
                       <div className='col-5'>
-                      <strong><p style={{ textAlign: 'right'}}><strong>Tipo: </strong></p></strong>
+                      <strong><p style={{ textAlign: 'right'}}><strong>Type: </strong></p></strong>
                       </div>
                       <div className='col-7'>
                       <span> 
@@ -139,7 +139,7 @@ const Modal = ({ pokemon, onClose }) => {
                     
                     <div className='row' style={{ marginBottom: '0px'}}>
                       <div className='col-5'>
-                      <strong><p style={{ textAlign: 'right'}}><strong>Habilidades: </strong></p></strong>
+                      <strong><p style={{ textAlign: 'right'}}><strong>Abilities: </strong></p></strong>
                       </div>
                       <div className='col-7'>
                       <span> 
@@ -152,7 +152,7 @@ const Modal = ({ pokemon, onClose }) => {
                     
                   </div>
                   <div className='card-data-pokemon'>
-                    <h5 style={{ textAlign: 'center' }}>Estadisticas basicas</h5>
+                    <h5 style={{ textAlign: 'center' }}>Basic statistics</h5>
                     <hr/>
                     <div className='row' style={{ marginBottom: '-15px'}}>
                       <div className='col-4'>
@@ -166,7 +166,7 @@ const Modal = ({ pokemon, onClose }) => {
                     </div>
                     <div className='row' style={{ marginBottom: '-15px'}}>
                       <div className='col-4'>
-                        <strong><p style={{ textAlign: 'right'}}>Ataque E:</p></strong>
+                        <strong><p style={{ textAlign: 'right'}}>Atack E:</p></strong>
                       </div>
                       <div className='col-8'>
                         <div className="progress">
@@ -176,7 +176,7 @@ const Modal = ({ pokemon, onClose }) => {
                     </div>
                     <div className='row' style={{ marginBottom: '-15px'}}>
                       <div className='col-4'>
-                        <strong><p style={{ textAlign: 'right'}}>Ataque E:</p></strong>
+                        <strong><p style={{ textAlign: 'right'}}>Atack S:</p></strong>
                       </div>
                       <div className='col-8'>
                         <div className="progress">
@@ -186,7 +186,7 @@ const Modal = ({ pokemon, onClose }) => {
                     </div>
                     <div className='row' style={{ marginBottom: '-15px'}}>
                       <div className='col-4'>
-                        <strong><p style={{ textAlign: 'right'}}>Defensa:</p></strong>
+                        <strong><p style={{ textAlign: 'right'}}>Defense:</p></strong>
                       </div>
                       <div className='col-8'>
                         <div className="progress">
@@ -196,7 +196,7 @@ const Modal = ({ pokemon, onClose }) => {
                     </div>
                     <div className='row' style={{ marginBottom: '-15px'}}>
                       <div className='col-4'>
-                        <strong><p style={{ textAlign: 'right'}}>Defensa S:</p></strong>
+                        <strong><p style={{ textAlign: 'right'}}>Defense S:</p></strong>
                       </div>
                       <div className='col-8'>
                         <div className="progress">
@@ -206,7 +206,7 @@ const Modal = ({ pokemon, onClose }) => {
                     </div>
                     <div className='row'>
                       <div className='col-4'>
-                        <strong><p style={{ textAlign: 'right'}}>Velocidad:</p></strong>
+                        <strong><p style={{ textAlign: 'right'}}>Speed:</p></strong>
                       </div>
                       <div className='col-8'>
                         <div className="progress">
@@ -219,7 +219,7 @@ const Modal = ({ pokemon, onClose }) => {
               </div>
               {pokemon.sprites.versions['generation-vii']['ultra-sun-ultra-moon'].front_default ? (
                   <div className='card-data-pokemon'>
-                  <h5 style={{ textAlign: 'center' }}>Diseños de Generacion</h5>
+                  <h5 style={{ textAlign: 'center' }}>Generation designs.</h5>
                   <hr />
                   <Swiper slidesPerView={4} centeredSlides={true} spaceBetween={30}grabCursor={true} pagination={{clickable: true,}} modules={[Pagination]}className="mySwiper">
                     {pokemon.sprites.versions['generation-i']['red-blue'].front_transparent && (

@@ -52,7 +52,7 @@ class Buscador extends Component {
       .then((data) => {
                 // Agregar tiempo de carga
           // Agregar tiempo de carga
-          toast.loading('Buscando...');
+          toast.loading('Searching...');
 
           // Simular un retraso de 2 segundos (2000 milisegundos)
           setTimeout(() => {
@@ -61,7 +61,7 @@ class Buscador extends Component {
 
             // Después de 2 segundos, mostrar el mensaje de error
             this.setState({ pokemonData: data, showModal: true });
-            toast.success('Pokemon encontrado');
+            toast.success('Pokemon found.');
           }, 2000);
         
       })
@@ -76,7 +76,7 @@ class Buscador extends Component {
             toast.dismiss();
 
             // Después de 2 segundos, mostrar el mensaje de error
-            toast.error('Debes Seleccionar un Pokémon');
+            toast.error('You must select a Pokémon');
           }, 1500);
         });
   };
@@ -102,7 +102,7 @@ class Buscador extends Component {
             <div className="col-sm-10 " >
 
               <select id="searchInput" className="form-control select2" aria-label=".form-select-lg example" > 
-                <option className='select2' value="">Ingrese Nombre o ID Pokemon</option>
+                <option className='select2' value="">Pokemon name or ID</option>
                 {allPokemon.map((pokemon) => {
                   const urlParts = pokemon.url.split('/'); // Divide la URL por las barras "/"
                   const pokemonNumber = urlParts[urlParts.length - 2]; // Obtiene el número del penúltimo segmento de la URL
@@ -126,7 +126,7 @@ class Buscador extends Component {
             </div>
             <div className="col-sm-2">
               <button type="button" className="btn btn-lg btn_mood" onClick={this.handleSearch}>
-                Buscar
+                  Search
               </button>
               
             </div>

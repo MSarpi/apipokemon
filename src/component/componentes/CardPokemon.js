@@ -42,56 +42,74 @@ function CardPokemon() {
     const [filteredPokemonList, setFilteredPokemonList] = useState([]);
 
     const [selectedValue, setSelectedValue] = useState('0');
-    const [inputValue, setInputValue] = useState(150);
-  
+    const [inputValue, setInputValue] = useState(151);
+
+    const [GetValue, setGetValueValue] = useState('Generacion I');
+
     const handleSelectChange = (event) => {
       const value = event.target.value;
       setInputValue(value);
-  
-      if (value === '151') {
-        setSelectedValue(0);
-      }
+      setGetValueValue(value);
+      //If para actualizar los datos de pokemones dependiendo la generacion 
+    {
+        if (value === '151') {
+            setSelectedValue(0);
+            setGetValueValue('Generacion I');
+          }
+    
+          if (value === '100') {
+            setSelectedValue(151);
+            setGetValueValue('Generacion II');
+          }
+    
+          if (value === '135') {
+            setSelectedValue(251);
+            setGetValueValue('Generacion III');
+          }
+    
+          if (value === '107') {
+            setSelectedValue(386);
+            setGetValueValue('Generacion IV');
+          }
+    
+          if (value === '155') {
+            setSelectedValue(494);
+            setGetValueValue('Generacion V');
+          }
+    
+          if (value === '72') {
+            setSelectedValue(649);
+            setGetValueValue('Generacion VI');
+          }
+    
+          if (value === '88') {
+            setSelectedValue(721);
+            setGetValueValue('Generacion VII');
+          }
+    
+          if (value === '96') {
+            setSelectedValue(809);
+            setGetValueValue('Generacion VIII');
+          }
+    
+          if (value === '112') {
+            setSelectedValue(905);
+            setGetValueValue('Generacion IX');
+          }
+    
+          if (value === '283') {
+            setSelectedValue(1017);
+            setGetValueValue('eXTRAS');
+          }
+    }
 
-      if (value === '100') {
-        setSelectedValue(151);
-      }
-
-      if (value === '135') {
-        setSelectedValue(251);
-      }
-
-      if (value === '107') {
-        setSelectedValue(386);
-      }
-
-      if (value === '155') {
-        setSelectedValue(494);
-      }
-
-      if (value === '72') {
-        setSelectedValue(649);
-      }
-
-      if (value === '88') {
-        setSelectedValue(721);
-      }
-
-      if (value === '96') {
-        setSelectedValue(809);
-      }
-
-      if (value === '112') {
-        setSelectedValue(905);
-      }
-
-      if (value === '283') {
-        setSelectedValue(1017);
-      }
     };
 
-    
-    const { pokemonList, loading } = UseFetch(`https://pokeapi.co/api/v2/pokemon?limit=${inputValue}&offset=${selectedValue}}`);
+    const { pokemonList, loading } = UseFetch(`https://pokeapi.co/api/v2/pokemon?limit=${inputValue}&offset=${selectedValue}`);
     const { TypeList, loadingType } = UseFetch(`https://pokeapi.co/api/v2/type`);
+    const { DescriptionList, loadingDescription } = UseFetch(`https://pokeapi.co/api/v2/pokemon-species?limit=${inputValue}&offset=${selectedValue}}`);
+    console.log(DescriptionList)
+
 
     const obtenerMasPokemones = async () => {
         if (cargando) return; // Evitar solicitudes simultáneas
@@ -164,16 +182,13 @@ function CardPokemon() {
     
     return ( 
         <div>
-            {loading &&  loadingType ? (
+            {loading &&  loadingType && loadingDescription ? (
             // Si loading es true, muestra un pre-cargador o una animación de carga
-            <div className="loading-indicator">Cargando...</div>
+            <div className="loading-indicator">Loading...</div>
             ) : (
             // Si loading es false, muestra el contenido una vez que la solicitud esté completa
             <div>
 
-            <div id='img_pkx' className='container' style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-                <img className='pokedex_img' src={pokedex} alt="Pokedex" />
-            </div>
             <div className='container mood_filter'>
                 <div className='row'>
                     <div className='col-12 col-sm-6'>
@@ -181,16 +196,16 @@ function CardPokemon() {
                         <div class="accordion-item">
                             <h2 class="accordion-header" id="headingTwo">
                             <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
-                                <h5>Filtro por Generación</h5>
+                                <h5>Filter by generation</h5>
                             </button>
                             </h2>
                             <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
                                 <div class="accordion-body">
                                     <div className='row '>
                                         <div className='col-sm-12 ' style={{marginBottom: "20px"}}> 
-                                        <h5>Seleccione una Generación</h5>   
+                                        <h5>Filter by generation</h5>   
                                         <select className='form-control'  onChange={handleSelectChange}>
-                                            <option value={selectedValue} selected disabled>Seleccione una generación</option>
+                                            <option value={selectedValue} selected disabled>Filter by generation</option>
                                             <option value="151">Generación I</option>
                                             <option value="100">generacion II</option>
                                             <option value="135">generacion III</option>
@@ -210,7 +225,7 @@ function CardPokemon() {
                                         <div className='col-3' >  
                                         <div className="d-grid gap-2">
                                         <button className="btn btn-danger" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo" onClick={() => { setSelectedValue(0); setInputValue(151); }}>
-                                            Limpiar
+                                            Clean
                                             </button>
                                         </div>
 
@@ -229,7 +244,7 @@ function CardPokemon() {
                         <div class="accordion-item">
                             <h2 class="accordion-header" id="headingOne">
                             <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                <h5>Filtro por tipo</h5>
+                                <h5>Filter by type</h5>
                             </button>
                             </h2>
                             <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
@@ -238,17 +253,17 @@ function CardPokemon() {
                                         <div className='col-sm-6 ' style={{marginBottom: "20px"}}> 
                                             <h5>Seleccione un tipo</h5>  
                                             <select className="form-control" onChange={(e) => setSelectedValue1(e.target.value)}>
-                                                <option value={"1"} selected disabled>Ejemplo: Fire</option>
+                                                <option value={"1"} selected disabled>Ej: Fire</option>
                                                 {TypeList.map((type) => (
                                                 <option value={type.name} key={type.name}>{type.name}</option>
                                                 ))}
                                             </select>
                                         </div>
-
+                                        
                                         <div className='col-sm-6 ' > 
                                             <h5>Seleccione un tipo (opcional)</h5>    
                                             <select className="form-control" onChange={(e) => setSelectedValue2(e.target.value)}>
-                                                <option value={"1"}selected disabled>Ejemplo: Fire</option>
+                                                <option value={"1"}selected disabled>Ej: Fire</option>
                                                 {TypeList.map((type) => (
                                                 <option value={type.name} key={type.name}>{type.name}</option>
                                                 ))}
@@ -262,7 +277,7 @@ function CardPokemon() {
                                         <div className='col-3 ' >  
                                             <div className="d-grid gap-2">
                                                 <button className="btn btn-danger" id="headingOne" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne" onClick={() => { setSelectedValue1(''); setSelectedValue2(''); }}>
-                                                    Limpiar
+                                                    Clean
                                                 </button>
                                             </div> 
                                         </div>
@@ -274,7 +289,9 @@ function CardPokemon() {
                     </div>
                 </div>
             </div>
-
+            <div class="d-flex justify-content-center align-items-center">
+                <strong><p className='generacion_name' onChange={(e) => setGetValueValue(e.target.value)}>{GetValue}</p></strong>
+                </div>
             <div className='container'>
                 <div className='row card-pokemon-border-mood' ref={tuRef}>
                     {visiblePokemon
@@ -289,7 +306,7 @@ function CardPokemon() {
                                     <div className='row'>
                                         <div style={{textAlign: "center"}} className='col-12'>
                                             
-                                        <input type="number" hidden className="nombre_pokemon" defaultValue={pokemon.id}/>
+                                        <input type="number" hidden readOnly value={pokemon.id}/>
                                         <h5 class="id_number_pk">#{pokemon.id}</h5>
                                         <a class="pk_miniatura"> <img src={pokemon.sprites.front_default}/></a>
                                             <strong>
@@ -343,8 +360,7 @@ function CardPokemon() {
                                         </div>
                                     )
                                 }
-
-                                <div className='row'>
+                                 <div className='row pokemon-type' >
                                     <div className='col-3'>
                                     
                                     </div>
@@ -364,8 +380,15 @@ function CardPokemon() {
                                     
                                     </div>
                                 </div>
-
+                                <div className='type-description'>
+                                <p className="description-text">
+                                    {DescriptionList && DescriptionList[index] && DescriptionList[index].flavor_text_entries && (
+                                        <p>{DescriptionList[index].flavor_text_entries[1].flavor_text}</p>
+                                    )}
+                                    </p>
                                 </div>
+                                </div>
+
                             
                             ):(
                             <div className="card card_mood card-pokemon-border">

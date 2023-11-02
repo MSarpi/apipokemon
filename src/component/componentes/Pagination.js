@@ -49,7 +49,6 @@ function Pagination({ currentPage, totalPages, setCurrentPage }) {
     <div className='container'>
         <nav aria-label="Page navigation">
         <ul className="pagination justify-content-center">
-                                  {/* Botón para ir a la primera página */}
           <li className={`page-item ${isFirstPage ? 'disabled' : ''}`}>
             <a href='#img_pkx'
               className="page-link"
@@ -65,7 +64,7 @@ function Pagination({ currentPage, totalPages, setCurrentPage }) {
                 onClick={() => handlePageChange(currentPage - 1)}
                 disabled={isFirstPage}
             >
-                Anterior
+                Previous
             </a>
             </li>
             {generatePageNumbers().map((page) => (
@@ -84,7 +83,7 @@ function Pagination({ currentPage, totalPages, setCurrentPage }) {
                 onClick={() => handlePageChange(currentPage + 1)}
                 disabled={isLastPage}
             >
-                Siguiente
+                Next
             </a>
             </li>
 
