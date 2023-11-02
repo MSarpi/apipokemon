@@ -90,7 +90,7 @@ function CardPokemon() {
     };
 
     
-    const { pokemonList, loading } = UseFetch(`https://pokeapi.co/api/v2/pokemon?limit=${inputValue}&offset=${selectedValue}}`);
+    const { pokemonList, loading } = UseFetch(`https://pokeapi.co/api/v2/pokemon?limit=${inputValue}&offset=${selectedValue}`);
     const { TypeList, loadingType } = UseFetch(`https://pokeapi.co/api/v2/type`);
 
     const obtenerMasPokemones = async () => {
